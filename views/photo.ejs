@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Saviors</title>
+</head>
+<body>
+    <div class="main relative flex flex-col justify-center items-center min-h-screen w-full text-white">
+        <div class="absolute min-h-screen w-full bg-[url(/images/mapbg.png)] bg-cover blur-[3px]"></div>
+        <form autocomplete="off" class="absolute flex flex-col justify-center items-center h-50 w-120 bg-zinc-800 shadow-xl rounded-xl" action="/upload" method="post" enctype="multipart/form-data">
+            <h2 class="text-xl mb-2">Upload Your Profile Picture Here...</h2>
+            <input type="file" name="avatar" class="bg-gray-200 text-black rounded-lg px-5 py-2">
+            <button id="reg" type="submit" class="w-40 mt-2 h-10 bg-emerald-300 rounded-lg text-black font-bold">Upload</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>

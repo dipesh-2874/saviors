@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Saviors</title>
+</head>
+<body>
+    <div class="relative main flex flex-col justify-center items-center min-h-screen w-full text-white">
+        <div class="absolute min-h-screen w-full bg-[url(/images/mapbg.png)] bg-cover blur-[3px]"></div>
+        <form class="absolute flex flex-col justify-center items-center h-100 w-150 bg-zinc-800 shadow-xl rounded-lg" action="/userlogin" method="post">
+            <h2 class="text-xl">Logging in as User</h2>
+            <input type="email" class="w-100 mt-5 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Email" name="email" required>
+            <input type="password" class="w-100 mt-3 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Password" name="password" required>
+            <h1 class="text-xs w-100 px-2 text-right">Don't have an account?... <a href="/register" class="text-blue-500"><em>Register</em></a></h1>
+            <button type="submit" class="w-40 mt-3 h-10 bg-blue-500 rounded-lg">Login</button>
+        </form>
+    </div>
+</body>
+</html>

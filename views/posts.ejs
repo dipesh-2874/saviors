@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Saviors</title>
+</head>
+<body>
+    <div class="main min-h-screen w-full bg-zinc-800 text-white">
+        <div class="navbar fixed flex flex-row justify-between px-10 py-4 w-full h-20 bg-zinc-800 shadow-xl z-1000">
+            <h1 class="text-2xl mt-2 font-bold text-shadow-lg">Hello, <span class="text-yellow-300"><%= currUser.username %></span> Welcome to <span class="text-emerald-300">Saviors</span></h1>
+            <div class="all flex flex-row gap-5 translate-x-[300px]">
+                <a href="/saviors" class="flex flex-row items-center gap-2">
+                    <box-icon name='group' color="#ffdf20"></box-icon>
+                    <h4 class="text-yellow-300 text-lg font-semibold ">Saviors</h4>
+                </a>
+            </div>
+            <div class="relative w-60 group">
+            <div class="h-14 flex justify-between items-center px-3 cursor-pointer">
+                <p></p> 
+                <!-- for alignment -->
+                <img src="/images/uploads/<%= currUser.avatar %>" alt="" class="h-10 w-10 p-0.5 rounded-full">
+            </div>
+            <div class="absolute flex flex-col right-0 top-14 w-60 h-55 bg-zinc-800 py-3 px-5 gap-3 rounded-lg opacity-0 pointer-events-none
+                    translate-y-[-10px]
+                    transition-all duration-300
+                    group-hover:opacity-100
+                    group-hover:pointer-events-auto
+                    group-hover:translate-y-0">
+                    <div class="acc flex flex-col">
+                        <h1 class="text-2xl font-bold"><%= currUser.username %></h1>
+                        <h2 class="text-xs text-zinc-500 leading-tight"><%= currUser.email %></h2>
+                        <h3 class="text-xs text-zinc-500 leading-tight"><%= currUser.number %></h3>
+                    </div>
+                    <a href="/profile" class="flex flex-row items-center gap-2"> 
+                        <box-icon name='add-to-queue' color="#34d399"></box-icon>
+                        <h4 class="text-emerald-300 text-lg font-semibold ">Add Request</h4>
+                    </a>
+                    <a href="/" class="flex flex-row items-center gap-2"> 
+                        <box-icon name='home' color="#ffdf20"></box-icon>
+                        <h4 class="text-yellow-300 text-lg font-semibold ">Home</h4>
+                    </a>
+                    <a href="/logout" class="flex flex-row items-center gap-2">
+                        <box-icon name='log-out' color="#f44336"></box-icon>
+                        <h4 class="text-red-500 text-lg font-semibold ">Logout</h4>
+                    </a>
+            </div>
+            </div>
+        </div>
+        <div class="content p-10 gap-3">
+            <h1 class="mt-20 text-2xl font-extrabold text-blue-500">All Requests</h1>
+            <div class="posts mt-7 flex flex-wrap gap-5">
+                <% if(posts.length !== 0){ %>
+                    <% posts.reverse().forEach((post) => { %>
+                            <% if(post.user.location.locality === currUser.location.locality){ %>
+                                <div class="post flex flex-col justify-between w-110 h-90 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-5 py-4">
+                                    <div class="pcont flex flex-col w-full gap-2">
+                                        <div class="userdata flex flex-row gap-1 items-center">
+                                            <img src="/images/uploads/<%= post.user.avatar %>" alt="" class="h-13 w-13 translate-y-[4px] rounded-full">
+                                            <div class="ids flex flex-col">
+                                                <h2 class="text-base font-bold translate-y-[7px]"><%= post.user.name %>
+                                                    <% if(post.user.type === null){ %>
+                                                    <% } else { %>
+                                                        <span class="text-sm font-base text-zinc-400">(<%= post.user.type %>)</span>
+                                                    <% } %>
+                                                </h2>
+                                                <h2 class="text-sm"><%= post.user.location.locality %></h2>
+                                                <h5 class="date text-xs text-zinc-400 translate-y-[-3px]"><%= post.date %></h5>
+                                            </div>
+                                        </div>
+                                        <% if(post.type && post.type !== ""){ %>
+                                            <h1 class="text-xl font-bold text-white"><%= post.type %></h1>
+                                        <% } %>
+                                        <h3 class="text-base font-semibold text-white"><%= post.content %></h3>
+                                    </div>
+                                    <div class="btns flex justify-between">
+                                        <p></p>
+                                        <a class="bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="">
+                                            <box-icon name='plus-circle' color="#ffffff" type='solid' animation='flashing' ></box-icon>
+                                            Support
+                                        </a>
+                                    </div>
+                                </div>
+                            <% } %>    
+                        <% }) %>
+                    <% posts.reverse().forEach((post) => { %>
+                            <% if(post.user.location.locality !== currUser.location.locality){ %>
+                                <div class="post flex flex-col justify-between w-110 h-90 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-5 py-4">
+                                    <div class="pcont flex flex-col w-full gap-2">
+                                        <div class="userdata flex flex-row gap-1 items-center">
+                                            <img src="/images/uploads/<%= post.user.avatar %>" alt="" class="h-13 w-13 translate-y-[4px] rounded-full">
+                                            <div class="ids flex flex-col">
+                                                <h2 class="text-base font-bold translate-y-[7px]"><%= post.user.name %>
+                                                    <% if(post.user.type === null){ %>
+                                                    <% } else { %>
+                                                        <span class="text-sm font-base text-zinc-400">(<%= post.user.type %>)</span>
+                                                    <% } %>
+                                                </h2>
+                                                <h2 class="text-sm"><%= post.user.location.locality %></h2>
+                                                <h5 class="date text-xs text-zinc-400 translate-y-[-3px]"><%= post.date %></h5>
+                                            </div>
+                                        </div>
+                                        <% if(post.type && post.type !== ""){ %>
+                                            <h1 class="text-xl font-bold text-white"><%= post.type %></h1>
+                                        <% } %>
+                                        <h3 class="text-base font-semibold text-white"><%= post.content %></h3>
+                                    </div>
+                                    <div class="btns flex justify-between">
+                                        <p></p>
+                                        <a class="bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="">
+                                            <box-icon name='plus-circle' color="#ffffff" type='solid' animation='flashing' ></box-icon>
+                                            Support
+                                        </a>
+                                    </div>
+                                </div>
+                            <% } %>    
+                        <% }) %>
+                <% } else { %>
+                    <h1 class="p-10 text-6xl font-extrabold text-zinc-700 text-shadow-lg"><em>NULL</em></h1>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>

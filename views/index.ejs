@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Saviors</title>
+</head>
+<body>
+    <div class="main relative flex flex-col justify-center items-center min-h-screen w-full text-white">
+        <div class="absolute min-h-screen w-full bg-[url(/images/mapbg.png)] bg-cover blur-[3px]"></div>
+        <form id="locform" class="absolute flex flex-col justify-center items-center h-130 w-150 bg-zinc-800 shadow-xl rounded-xl" action="/create" method="post">
+            <h2 class="text-xl mb-2">Register Here...</h2>
+            <div class="savior w-100 flex flex-row">
+                <select name="type" id="type" class="w-92 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg text-zinc-400" required>
+                    <option class="bg-zinc-800 rounded-lg" value="" disabled selected hidden>--Select your savior type--</option>
+                    <option class="bg-zinc-800 rounded-lg" value="Plumber">Plumber</option>
+                    <option class="bg-zinc-800 rounded-lg" value="Electrician">Electrician</option>
+                    <option class="bg-zinc-800 rounded-lg" value="Carpenter">Carpenter</option>
+                    <option class="bg-zinc-800 rounded-lg" value="HVAC Technician">HVAC Technician</option>
+                    <option class="bg-zinc-800 rounded-lg" value="Solar Installer">Solar Installer</option>
+                    <option class="bg-zinc-800 rounded-lg" value="Appliances Repair Technician">Appliances Repair Technician</option>
+                    <option class="bg-zinc-800 rounded-lg" value="Auto Mechanic">Auto Mechanic</option>
+                    <option class="bg-zinc-800 rounded-lg" value="General Maintenance">General Maintenance</option>
+                    <option class="bg-zinc-800 rounded-lg" value="none">None</option>
+                </select>
+                <div class="info group flex flex-row h-10 w-8 relative cursor-pointer">
+                    <box-icon name='info-circle' class="h-10 w-8 p-1 translate-y-[7px] translate-x-[2px] opacity-80" color='#ffffff'></box-icon>
+                    <div class="w-70 absolute bg-transparent px-4 py-2 pointer-events-none opacity-0 bg-zinc-700 rounded-lg
+                    translate-x-[-10px]
+                    transition-all duration-300
+                    group-hover:opacity-100
+                    group-hover:pointer-events-auto
+                    group-hover:translate-x-[35px]">
+                        <h4 class="text-xs text-zinc-300">If you can provide some services that are in the dropdown to others, then we acknowledge you as a Savior, a Savior of the society.</h4>
+                    </div>
+                </div>
+            </div>
+            <input type="text" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Name" name="name" required>
+            <input type="text" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Username" name="username" required>
+            <input type="number" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Age" name="age" required>
+            <input type="number" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Contact Number" name="number" required>
+            <input type="email" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Email" name="email" required>
+            <input type="password" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Password" name="password" required>
+            <input id="lat" type="number" class="hidden" name="latitude" value=0>
+            <input id="long" type="number" class="hidden" name="longitude" value=0>
+            <input id="loc" type="text" class="hidden" name="locality" value="Unknown">
+            <h1 class="text-xs w-100 px-2 text-right">Already have an account?... <a href="/userlogin" class="text-blue-500"><em>Login</em></a></h1>
+            <button id="reg" type="submit" class="w-40 mt-2 h-10 bg-blue-500 rounded-lg">Register</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="/javascripts/location.js"></script>
+</body>
+</html>

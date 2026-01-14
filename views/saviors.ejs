@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Saviors</title>
+</head>
+<body>
+    <div class="main min-h-screen w-full bg-zinc-800 text-white">
+        <div class="navbar fixed flex flex-row justify-between px-10 py-4 w-full h-20 bg-zinc-800 shadow-xl z-1000">
+            <h1 class="text-2xl mt-2 font-bold text-shadow-lg">Hello, <span class="text-yellow-300"><%= currUser.username %></span> Welcome to <span class="text-emerald-300">Saviors</span></h1>
+            <div class="all flex flex-row gap-5 translate-x-[300px]">
+                <a href="/post" class="flex flex-row items-center gap-2">
+                    <box-icon name='conversation' color="#2196f3"></box-icon>
+                    <h4 class="text-blue-500 text-lg font-semibold ">All Requests</h4>
+                </a>
+            </div>
+            <div class="relative w-60 group">
+            <div class="h-14 flex justify-between items-center px-3 cursor-pointer">
+                <p></p> 
+                <!-- for alignment -->
+                <img src="/images/uploads/<%= currUser.avatar %>" alt="" class="h-10 w-10 p-0.5 rounded-full">
+            </div>
+            <div class="absolute flex flex-col right-0 top-14 w-60 h-55 bg-zinc-800 py-3 px-5 gap-3 rounded-lg opacity-0 pointer-events-none
+                    translate-y-[-10px]
+                    transition-all duration-300
+                    group-hover:opacity-100
+                    group-hover:pointer-events-auto
+                    group-hover:translate-y-0">
+                    <div class="acc flex flex-col">
+                        <h1 class="text-2xl font-bold"><%= currUser.username %></h1>
+                        <h2 class="text-xs text-zinc-500 leading-tight"><%= currUser.email %></h2>
+                        <h3 class="text-xs text-zinc-500 leading-tight"><%= currUser.number %></h3>
+                    </div>
+                    <a href="/profile" class="flex flex-row items-center gap-2"> 
+                        <box-icon name='add-to-queue' color="#34d399"></box-icon>
+                        <h4 class="text-emerald-300 text-lg font-semibold ">Add Request</h4>
+                    </a>
+                    <a href="/" class="flex flex-row items-center gap-2"> 
+                        <box-icon name='home' color="#ffdf20"></box-icon>
+                        <h4 class="text-yellow-300 text-lg font-semibold ">Home</h4>
+                    </a>
+                    <a href="/logout" class="flex flex-row items-center gap-2">
+                        <box-icon name='log-out' color="#f44336"></box-icon>
+                        <h4 class="text-red-500 text-lg font-semibold ">Logout</h4>
+                    </a>
+            </div>
+            </div>
+        </div>
+        <div class="content p-10 gap-3">
+            <h1 class="mt-20 text-2xl font-extrabold text-emerald-300">All the Saviors around ...</h1>
+            <div class="provs mt-7 flex flex-wrap gap-5">
+                <% users.forEach((user) => { %>
+                    <% if(user.type === null || user.location.locality !== currUser.location.locality || user._id === currUser._id){ %>
+                    <% } else { %>
+                        <div class="prov flex flex-col justify-between w-80 h-110 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-6 py-6">
+                            <div class="data">
+                                <div class="provdata w-full h-60 bg-[url(/images/uploads/<%= user.avatar %>)] bg-cover rounded-md"></div>
+                                <h1 class="text-xl font-bold mt-1"><%= user.name %></h1>
+                                <h2 class="text-base font-semibold translate-y-[-5px]"><%= user.type %></h2>
+                                <h2 class="text-sm font-semibold text-zinc-400 translate-y-[-10px]"><%= user.location.locality %></h2>
+                                <input id="num" class="text-xs translate-y-[-15px]" value="<%= user.number %>" readonly>
+                                <div class="rating flex flex-row justify-between text-xs font-light text-zinc-300 translate-y-[-20px]">
+                                    <h4>Rating: <%= ((user.rating.tr)/(user.rating.tu)).toFixed(1) %>/5</h4>
+                                    <h4>Rated by <%= user.rating.tu %> user</h4>
+                                </div>
+                            </div>
+                            <div class="container flex flex-row justify-between">
+                                <form id="rateform" method="post" action="/rate/<%= user._id %>">
+                                    <input id="rating" name="rating" type="number" hidden value=0>
+                                    <button type="submit" id="rate" class="flex items-center gap-1 bg-yellow-300 px-2 py-1 rounded-lg text-zinc-700 font-semibold cursor-pointer">
+                                        <box-icon name='star' type="solid" class="h-5 w-5" color='#3f3f47' ></box-icon>
+                                        Rate
+                                    </button>
+                                </form>
+                                <a id="copyBtn" class="flex items-center gap-1 bg-blue-600 px-2 py-1 rounded-lg">
+                                    <box-icon name='phone-call' class="h-5 w-5" color='#ffffff' ></box-icon>
+                                    Contact
+                                </a>
+                            </div>
+                        </div>
+                    <% } %>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/copy.js"></script>
+    <script src="/javascripts/rate.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

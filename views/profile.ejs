@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Saviors</title>
+</head>
+<body>
+    <div class="main min-h-screen w-full bg-zinc-800 text-white">
+        <div class="navbar fixed flex flex-row justify-between px-10 py-4 w-full h-20 bg-zinc-800 shadow-xl z-1000">
+            <h1 class="text-2xl mt-2 font-bold text-shadow-lg">Hello, <span class="text-yellow-300"><%= currUser.username %></span> Welcome to <span class="text-emerald-300">Saviors</span></h1>
+            <div class="all flex flex-row gap-5 translate-x-[250px]">
+                <a href="/post" class="flex flex-row items-center gap-2">
+                    <box-icon name='conversation' color="#2196f3"></box-icon>
+                    <h4 class="text-blue-500 text-lg font-semibold ">All Requests</h4>
+                </a>
+                <a href="/saviors" class="flex flex-row items-center gap-2">
+                    <box-icon name='group' color="#ffdf20"></box-icon>
+                    <h4 class="text-yellow-300 text-lg font-semibold ">Saviors</h4>
+                </a>
+            </div>
+            <div class="relative w-60 group">
+            <div class="h-14 flex justify-between items-center px-3 cursor-pointer">
+                <p></p>     
+                <!-- for alignment -->
+                <img src="/images/uploads/<%= currUser.avatar %>" alt="" class="h-10 w-10 rounded-full object-cover">
+            </div>
+            <div class="absolute flex flex-col right-0 top-14 w-60 h-55 bg-zinc-800 py-3 px-5 gap-3 rounded-lg opacity-0 pointer-events-none
+                    translate-y-[-10px]
+                    transition-all duration-300
+                    group-hover:opacity-100
+                    group-hover:pointer-events-auto
+                    group-hover:translate-y-0">
+                    <div class="acc flex flex-col">
+                        <h1 class="text-2xl font-bold"><%= currUser.username %></h1>
+                        <h2 class="text-xs text-zinc-500 leading-tight"><%= currUser.email %></h2>
+                        <h3 class="text-xs text-zinc-500 leading-tight"><%= currUser.number %></h3>
+                    </div>
+                    <a href="#myPosts" class="flex flex-row items-center gap-2">
+                        <box-icon name='chat' color="#34d399"></box-icon>
+                        <h4 class="text-emerald-300 text-lg font-semibold ">My Requests</h4>
+                    </a>
+                    <a href="/profile/avatar" class="flex flex-row items-center gap-2">
+                        <box-icon name='cloud-upload' color="#2196f3"></box-icon>
+                        <h4 class="text-blue-500 text-lg font-semibold ">Upload Picture</h4>
+                    </a>
+                    <a href="/" class="flex flex-row items-center gap-2"> 
+                        <box-icon name='home' color="#ffdf20"></box-icon>
+                        <h4 class="text-yellow-300 text-lg font-semibold ">Home</h4>
+                    </a>
+                    <a href="/logout" class="flex flex-row items-center gap-2">
+                        <box-icon name='log-out' color="#f44336"></box-icon>
+                        <h4 class="text-red-500 text-lg font-semibold ">Logout</h4>
+                    </a>
+            </div>
+            </div>
+        </div>
+        <div id="profile" class="main flex flex-row justify-between text-center items-center min-h-screen w-full px-10 py-22">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6379.431352006415!2d<%= currUser.location.longitude %>!3d<%= currUser.location.latitude %>!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1768161981683!5m2!1sen!2sin" class="rounded-lg" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <form id="locform" class="flex flex-row w-fit items-center text-left h-10 gap-1 mt-2 px-2 bg-gray-200 text-black font-semibold rounded-md" action="/update/<%= currUser._id %>" method="post">
+                    <input id="lat" type="number" class="hidden" name="latitude" value=0>
+                    <input id="long" type="number" class="hidden" name="longitude" value=0>
+                    <input id="loc" type="text" class="hidden" name="locality" value="Unknown">
+                    <box-icon name='current-location' color="#000000"></box-icon>
+                    <button id="reg" type="button">Current Location</button>
+                </form>
+            </div>
+            <div class="form flex flex-col text-center items-center">
+                <h1 class="w-full flex items-center text-left text-white text-2xl font-bold text-shadow-lg translate-y-[-50px]"><box-icon color="#ffffff" class="h-8 w-8 mr-1 translate-y-[1px]" name='map-pin'></box-icon>You are currently in<span class="text-yellow-300 ml-2"><%= currUser.location.locality %></span>. . .</h1>
+                <h1 class="text-white text-3xl font-extrabold text-shadow-lg">Generate a Request</h1>
+                <form class="mt-5 flex flex-col justify-center items-center" action="/post" method="post">
+                    <h6 class="w-27 text-center bg-zinc-800 px-1 py-1 translate-y-[10px] translate-x-[-235px] text-sm text-emerald-200 rounded-lg">type of service</h6>
+                    <select
+                        name="type"
+                        class="w-150 h-10 px-5 py-2
+                            rounded-lg border-2 border-emerald-200
+                            bg-zinc-800
+                            text-zinc-400
+                            focus:outline-none focus:ring-2 focus:ring-emerald-400
+                            valid:text-white" required>
+                        <option value="" disabled selected>
+                        -- Select service type --
+                        </option>
+
+                        <option class="bg-zinc-800" value="plumber">Plumber</option>
+                        <option class="bg-zinc-800" value="electrician">Electrician</option>
+                        <option class="bg-zinc-800" value="carpenter">Carpenter</option>
+                        <option class="bg-zinc-800" value="hvacTechnician">HVAC Technician</option>
+                        <option class="bg-zinc-800" value="solarInstaller">Solar Installer</option>
+                        <option class="bg-zinc-800" value="appliancesRepair">Appliances Repair Technician</option>
+                        <option class="bg-zinc-800" value="autoMechanic">Auto Mechanic</option>
+                        <option class="bg-zinc-800" value="generalMaintenance">General Maintenance</option>
+                    </select>
+                    <h6 class="w-56 text-center bg-zinc-800 px-1 py-1 translate-y-[10px] translate-x-[-177px] text-sm text-emerald-200 rounded-lg">short description of your problem</h6>
+                    <textarea type="text" placeholder="" class="w-150 h-40 p-5 resize-none outline-emerald-400 h-10 border-2 rounded-lg border-emerald-200 text-white" name="content" required></textarea>
+                    <div class="btn flex flex-row justify-between px-5 w-150">
+                        <button class="bg-emerald-200 text-zinc-800 mt-3 py-1 px-3 rounded-lg font-bold" type="reset">RESET</button>
+                        <button class="bg-emerald-200 text-zinc-800 mt-3 py-1 px-3 rounded-lg font-bold" type="submit">SUBMIT</button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+        <div id="myPosts" class="content flex flex-col min-h-screen w-full p-10 gap-3">
+            <h1 class="mt-20 text-2xl font-extrabold text-emerald-300">My Requests</h1>
+            <div class="posts mt-5 flex flex-wrap gap-5">
+                <% if(currUser.posts.length !== 0){ %>
+                    <% currUser.posts.reverse().forEach((post) => { %>
+                        <div class="post flex flex-col justify-between w-110 h-90 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-5 py-4">
+                            <div class="pcont flex flex-col w-full gap-2">
+                                <div class="userdata flex flex-row gap-2 items-center">
+                                    <img src="/images/uploads/<%= currUser.avatar %>" class="h-13 w-13 translate-y-[4px] rounded-full" alt="">
+                                    <div class="ids flex flex-col">
+                                        <h2 class="text-base font-bold translate-y-[7px]">@<%= currUser.username %></h2>
+                                        <h2 class="text-sm"><%= currUser.location.locality %></h2>
+                                        <h5 class="date text-xs text-zinc-400 translate-y-[-3px]"><%= post.date %></h5>
+                                    </div>
+                                </div>
+                                <% if(post.type && post.type !== ""){ %>
+                                    <h1 class="text-xl mt-3 font-bold text-white"><%= post.type %></h1>
+                                <% } %>
+                                <h3 class="text-base font-semibold text-white"><%= post.content %></h3>
+                            </div>
+                            <div class="btns flex justify-between">
+                                <p></p>
+                                <a class="bg-emerald-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="/solved/<%= post._id %>">
+                                    <box-icon name='check' color="#ffffff"></box-icon>
+                                    Solved
+                                </a>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <h1 class="p-10 text-6xl font-extrabold text-zinc-700 text-shadow-lg"><em>NULL</em></h1>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="/javascripts/location.js"></script>
+</body>
+</html>
