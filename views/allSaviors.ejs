@@ -63,6 +63,10 @@
                                 <h2 class="text-base font-semibold translate-y-[-5px]"><%= user.type %></h2>
                                 <h2 class="text-sm font-semibold text-zinc-400 translate-y-[-10px]"><%= user.location.locality %></h2>
                                 <input id="num" class="text-xs translate-y-[-15px]" value="<%= user.number %>" readonly>
+                                <div class="rating flex flex-row justify-between text-xs font-light text-zinc-300 translate-y-[-20px]">
+                                    <h4>Rating: <%= ((user.rating.tr)/(user.rating.tu)).toFixed(1) %>/5</h4>
+                                    <h4>Rated by <%= user.rating.tu %> user</h4>
+                                </div>
                             </div>
                             <div class="container flex flex-row justify-between">
                                 <form id="rateform" method="post" action="/rateAll/<%= user._id %>">
