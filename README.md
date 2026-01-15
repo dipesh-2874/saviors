@@ -34,7 +34,7 @@ The Saviors project is designed to demonstrate:
 |--------|--------------|
 | **Frontend** | EJS |
 | **Styling** | CSS3, Tailwind CSS |
-| **Scripting** | Express.js,Node.js,Mongoose.js |
+| **Scripting** | Express.js,Node.js,Mongoose(MongoDB) |
 | **Version Control** | Git & GitHub |
 | **Deployment** | [GitHub Pages / Render] |
 
