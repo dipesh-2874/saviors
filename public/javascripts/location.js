@@ -2,6 +2,7 @@ const locality = document.getElementById("loc");
 const latitude = document.getElementById("lat");
 const longitude = document.getElementById("long");
 const form = document.getElementById("locform");
+const form2 = document.getElementById("availform");
 
 document.getElementById("reg").addEventListener("click", (e) => {
     e.preventDefault(); 
@@ -33,3 +34,7 @@ document.getElementById("reg").addEventListener("click", (e) => {
         (err) => alert(err.message)
     );
 });
+
+document.getElementById("availability").addEventListener("change", () => {
+    form2.submit();
+})

@@ -31,6 +31,10 @@ const userSchema = mongoose.Schema({
     rating: {
         tr: Number,
         tu: Number
+    },
+    availability: {
+        type: String,
+        default: "Available"
     }
 })
 

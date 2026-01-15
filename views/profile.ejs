@@ -69,6 +69,23 @@
                 </form>
             </div>
             <div class="form flex flex-col text-center items-center">
+                <% if(currUser.type){ %>
+                    <form id="availform" action="/avail/<%= currUser._id %>" method="post" class="avail px-5 flex flex-row w-full justify-between translate-y-[-70px]">
+                        <p></p>
+                        <select name="availability" id="availability"
+                            class="w-40 h-10 px-5 py-2
+                                rounded-lg border-2 border-zinc-400
+                                bg-zinc-800
+                                text-zinc-400
+                                focus:outline-none focus:ring-2 focus:ring-yellow-300
+                                valid:text-white">
+                            <option value="<%= currUser.availability %>" selected disabled><%= currUser.availability %></option>
+                            <option value="Available">Available</option>
+                            <option value="Busy">Busy</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select>
+                    </form>
+                <% } %>
                 <h1 class="w-full flex items-center text-left text-white text-2xl font-bold text-shadow-lg translate-y-[-50px]"><box-icon color="#ffffff" class="h-8 w-8 mr-1 translate-y-[1px]" name='map-pin'></box-icon>You are currently in<span class="text-yellow-300 ml-2"><%= currUser.location.locality %></span>. . .</h1>
                 <h1 class="text-white text-3xl font-extrabold text-shadow-lg">Generate a Request</h1>
                 <form class="mt-5 flex flex-col justify-center items-center" action="/post" method="post">

@@ -72,6 +72,14 @@ app.post("/update/:id",isLoggedIn, async (req,res) => {
     res.redirect("/profile");
 })
 
+app.post("/avail/:id", isLoggedIn, async (req, res) => {
+    let {availability} = req.body;
+    let user = await userModel.findOne({_id: req.params.id});
+    user.availability = availability;
+    user.save();
+    res.redirect("/profile");
+})
+
 app.post("/rate/:id",isLoggedIn, async (req,res) => {
     let {rating} = req.body;
     let user = await userModel.findOne({_id: req.params.id});
@@ -147,7 +155,8 @@ app.post("/create", async (req,res) => {
         rating: {
             tr: 0,
             tu: 0
-        }
+        },
+        availability: "Available"
     });
 
 
