@@ -48,8 +48,7 @@
         <div class="content p-10 gap-3">
             <div class="provs mt-20 flex flex-wrap gap-5">
                 <% users.forEach((user) => { %>
-                    <% if(user.type === null || user._id === currUser._id){ %>
-                    <% } else { %>
+                    <% if(user.type !== null && user._id.toString() !== currUser._id.toString()){ %>
                         <div class="prov flex flex-col justify-between w-80 h-110 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-6 py-6">
                             <div class="data">
                                 <div class="provdata w-full h-60 bg-[url(/images/uploads/<%= user.avatar %>)] bg-cover rounded-md"></div>
@@ -72,6 +71,7 @@
                                 </a>
                             </div>
                         </div>
+                    <% } else { %>
                     <% } %>
                 <% }) %>
             </div>
