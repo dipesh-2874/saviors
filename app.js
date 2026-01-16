@@ -131,38 +131,43 @@ app.post("/post", isLoggedIn, async (req,res) => {
 })
 
 app.post("/create", async (req,res) => {
-    let {type, name, username, age, number, email, password, latitude, longitude, locality} = req.body;
-    let user = await userModel.findOne({email});
-    if(user) return res.status(400).send("Provided email is already in use.");
-    if(type === "" || type === "none") type = null;
-    let newUser;
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
+    try{
+        let {type, name, username, age, number, email, password, latitude, longitude, locality} = req.body;
+        let user = await userModel.findOne({email});
+        if(user) return res.status(400).redirect("/register?error=email");
+        if(type === "" || type === "none") type = null;
+        let newUser;
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(password, salt);
 
-    newUser = await userModel.create({
-        type,
-        name,
-        username,
-        age,
-        number,
-        email,
-        location: {
-            latitude,
-            longitude,
-            locality
-        },
-        password: hash,
-        rating: {
-            tr: 0,
-            tu: 0
-        },
-        availability: "Available"
-    });
+        newUser = await userModel.create({
+            type,
+            name,
+            username,
+            age,
+            number,
+            email,
+            location: {
+                latitude,
+                longitude,
+                locality
+            },
+            password: hash,
+            rating: {
+                tr: 0,
+                tu: 0
+            },
+            availability: "Available"
+        });
 
 
-    let token = jwt.sign({email: newUser.email , userid: newUser._id}, process.env.JWT_SECRET, {expiresIn: "7d"});
-    res.cookie("token", token);
-    res.status(201).send("Registered successfully. You can head to profile now.");
+        let token = jwt.sign({email: newUser.email , userid: newUser._id}, process.env.JWT_SECRET, {expiresIn: "7d"});
+        res.cookie("token", token);
+        res.status(201).redirect("/profile?register=success");
+    } catch(err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
 })
 
 app.post("/userlogin", async (req,res) => {
@@ -174,7 +179,7 @@ app.post("/userlogin", async (req,res) => {
         if(result) {
             let token = jwt.sign({email: user.email, userid: user._id}, process.env.JWT_SECRET);
             res.cookie("token", token);
-            res.status(200).redirect("/profile");
+            res.status(200).redirect("/profile?login=success");
         }
         else return res.status(500).send("Something went wrong!!");
     })

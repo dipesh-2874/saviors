@@ -9,57 +9,64 @@
 </head>
 <body>
     <div class="main min-h-screen w-full bg-zinc-800 text-white">
-        <nav class="navbar fixed flex flex-row justify-between px-10 py-4 w-full h-20 bg-zinc-800 shadow-xl z-1000">
-            <h1 class="text-2xl mt-2 font-bold text-shadow-lg">Hello, <span class="text-yellow-300"><%= currUser.username %></span> Welcome to <span class="text-emerald-300">Saviors</span></h1>
-            <div class="all flex flex-row gap-5 translate-x-[250px]">
-                <a href="/post" class="flex flex-row items-center gap-2">
+        <nav class="fixed top-0 left-0 w-full bg-zinc-800 shadow-xl z-50">
+            <div class="flex flex-wrap md:flex-nowrap items-center justify-between px-4 md:px-10 h-auto md:h-20">
+                <h1 class="text-lg md:text-2xl font-bold">
+                Hello, <span class="text-yellow-300"><%= currUser.username %></span> Welcome to <span class="text-emerald-300">Saviors</span>
+                </h1>
+                <div class="flex gap-4 mt-2 md:mt-0">
+                <a href="/post" class="flex flex-row items-center gap-1">
                     <box-icon name='conversation' color="#2196f3"></box-icon>
-                    <h4 class="text-blue-500 text-lg font-semibold ">All Requests</h4>
+                    <h4 class="text-blue-500 text-lg font-semibold ">Requests</h4>
                 </a>
-                <a href="/saviors" class="flex flex-row items-center gap-2">
+                <a href="/saviors" class="flex flex-row items-center gap-1">
                     <box-icon name='group' color="#ffdf20"></box-icon>
                     <h4 class="text-yellow-300 text-lg font-semibold ">Saviors</h4>
                 </a>
-            </div>
-            <div class="relative w-60 group">
-            <div class="h-14 flex justify-between items-center px-3 cursor-pointer">
-                <p></p>     
-                <!-- for alignment -->
-                <img src="/images/uploads/<%= currUser.avatar %>" alt="" class="h-10 w-10 rounded-full object-cover">
-            </div>
-            <div class="absolute flex flex-col right-0 top-14 w-60 h-55 bg-zinc-800 py-3 px-5 gap-3 rounded-lg opacity-0 pointer-events-none
-                    translate-y-[-10px]
-                    transition-all duration-300
-                    group-hover:opacity-100
-                    group-hover:pointer-events-auto
-                    group-hover:translate-y-0">
-                    <div class="acc flex flex-col">
-                        <h1 class="text-2xl font-bold"><%= currUser.username %></h1>
-                        <h2 class="text-xs text-zinc-500 leading-tight"><%= currUser.email %></h2>
-                        <h3 class="text-xs text-zinc-500 leading-tight"><%= currUser.number %></h3>
+                </div>
+
+                <div class="relative w-60 group">
+                    <div class="h-14 flex justify-between items-center px-3 cursor-pointer">
+                        <p></p>     
+                        <!-- for alignment -->
+                        <img src="/images/uploads/<%= currUser.avatar %>" alt="" class="h-10 w-10 rounded-full object-cover">
                     </div>
-                    <a href="#myPosts" class="flex flex-row items-center gap-2">
-                        <box-icon name='chat' color="#34d399"></box-icon>
-                        <h4 class="text-emerald-300 text-lg font-semibold ">My Requests</h4>
-                    </a>
-                    <a href="/profile/avatar" class="flex flex-row items-center gap-2">
-                        <box-icon name='cloud-upload' color="#2196f3"></box-icon>
-                        <h4 class="text-blue-500 text-lg font-semibold ">Upload Picture</h4>
-                    </a>
-                    <a href="/" class="flex flex-row items-center gap-2"> 
-                        <box-icon name='home' color="#ffdf20"></box-icon>
-                        <h4 class="text-yellow-300 text-lg font-semibold ">Home</h4>
-                    </a>
-                    <a href="/logout" class="flex flex-row items-center gap-2">
-                        <box-icon name='log-out' color="#f44336"></box-icon>
-                        <h4 class="text-red-500 text-lg font-semibold ">Logout</h4>
-                    </a>
-            </div>
+                    <div class="absolute flex flex-col right-0 top-14 w-60 h-65 bg-zinc-800 py-3 px-5 gap-3 rounded-lg opacity-0 pointer-events-none
+                            translate-y-[-10px]
+                            transition-all duration-300
+                            group-hover:opacity-100
+                            group-hover:pointer-events-auto
+                            group-hover:translate-y-0">
+                            <div class="acc flex flex-col">
+                                <h1 class="text-2xl font-bold"><%= currUser.username %></h1>
+                                <h2 class="text-xs text-zinc-500 leading-tight"><%= currUser.email %></h2>
+                                <h3 class="text-xs text-zinc-500 leading-tight"><%= currUser.number %></h3>
+                            </div>
+                            <a href="#myPosts" class="flex flex-row items-center gap-2">
+                                <box-icon name='chat' color="#34d399"></box-icon>
+                                <h4 class="text-emerald-300 text-lg font-semibold ">My Requests</h4>
+                            </a>
+                            <a href="/profile/avatar" class="flex flex-row items-center gap-2">
+                                <box-icon name='cloud-upload' color="#2196f3"></box-icon>
+                                <h4 class="text-blue-500 text-lg font-semibold ">Upload Picture</h4>
+                            </a>
+                            <a href="/" class="flex flex-row items-center gap-2"> 
+                                <box-icon name='home' color="#ffdf20"></box-icon>
+                                <h4 class="text-yellow-300 text-lg font-semibold ">Home</h4>
+                            </a>
+                            <a href="/logout" class="flex flex-row items-center gap-2">
+                                <box-icon name='log-out' color="#f44336"></box-icon>
+                                <h4 class="text-red-500 text-lg font-semibold ">Logout</h4>
+                            </a>
+                    </div>
+                </div>
             </div>
         </nav>
-        <div id="profile" class="main flex flex-row justify-between text-center items-center min-h-screen w-full px-10 py-22">
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6379.431352006415!2d<%= currUser.location.longitude %>!3d<%= currUser.location.latitude %>!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1768161981683!5m2!1sen!2sin" class="rounded-lg" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="pt-24"></div> <!-- offset for fixed navbar -->
+
+        <div id="profile" class="flex flex-col lg:flex-row gap-8 items-center justify-center px-4 md:px-10">
+            <div class="map w-full max-w-xl">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6379.431352006415!2d<%= currUser.location.longitude %>!3d<%= currUser.location.latitude %>!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1768161981683!5m2!1sen!2sin" class="w-full h-64 md:h-96 rounded-lg" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <form id="locform" class="flex flex-row w-fit items-center text-left h-10 gap-1 mt-2 px-2 bg-gray-200 text-black font-semibold rounded-md" action="/update/<%= currUser._id %>" method="post">
                     <input id="lat" type="number" class="hidden" name="latitude" value=0>
                     <input id="long" type="number" class="hidden" name="longitude" value=0>
@@ -68,17 +75,15 @@
                     <button id="reg" type="button">Current Location</button>
                 </form>
             </div>
-            <div class="form flex flex-col text-center items-center">
-                <% if(currUser.type){ %>
-                    <form id="availform" action="/avail/<%= currUser._id %>" method="post" class="avail px-5 flex flex-row w-full justify-between translate-y-[-70px]">
-                        <p></p>
+            <div class="flex flex-col gap-6 w-full max-w-2xl">
+                <% if (currUser.type) { %>
+                    <!-- AVAILABILITY -->
+                    <form action="/avail/<%= currUser._id %>" method="post" class="flex justify-end">
                         <select name="availability" id="availability"
-                            class="w-40 h-10 px-5 py-2
+                            class="w-44 h-10 px-4
                                 rounded-lg border-2 border-zinc-400
-                                bg-zinc-800
-                                text-zinc-400
-                                focus:outline-none focus:ring-2 focus:ring-yellow-300
-                                valid:text-white">
+                                bg-zinc-800 text-zinc-300
+                                focus:outline-none focus:ring-2 focus:ring-yellow-300">
                             <option value="<%= currUser.availability %>" selected disabled><%= currUser.availability %></option>
                             <option value="Available">Available</option>
                             <option value="Busy">Busy</option>
@@ -86,42 +91,60 @@
                         </select>
                     </form>
                 <% } %>
-                <h1 class="w-full flex items-center text-left text-white text-2xl font-bold text-shadow-lg translate-y-[-50px]"><box-icon color="#ffffff" class="h-8 w-8 mr-1 translate-y-[1px]" name='map-pin'></box-icon>You are currently in<span class="text-yellow-300 ml-2"><%= currUser.location.locality %></span>. . .</h1>
-                <h1 class="text-white text-3xl font-extrabold text-shadow-lg">Generate a Request</h1>
-                <form class="mt-5 flex flex-col justify-center items-center" action="/post" method="post">
-                    <h6 class="w-27 text-center bg-zinc-800 px-1 py-1 translate-y-[10px] translate-x-[-235px] text-sm text-emerald-200 rounded-lg">type of service</h6>
-                    <select
-                        name="type"
-                        class="w-150 h-10 px-5 py-2
-                            rounded-lg border-2 border-emerald-200
-                            bg-zinc-800
-                            text-zinc-400
-                            focus:outline-none focus:ring-2 focus:ring-emerald-400
-                            valid:text-white">
-                        <option value="" disabled selected hidden>
-                        -- Select service type --
-                        </option>
-
-                        <option class="bg-zinc-800" value="Plumber">Plumber</option>
-                        <option class="bg-zinc-800" value="Electrician">Electrician</option>
-                        <option class="bg-zinc-800" value="Carpenter">Carpenter</option>
-                        <option class="bg-zinc-800" value="HVAC Technician">HVAC Technician</option>
-                        <option class="bg-zinc-800" value="Dentist">Dentist</option>
-                        <option class="bg-zinc-800" value="Primary Physician">Primary Physician</option>
-                        <option class="bg-zinc-800" value="Solar Installer">Solar Installer</option>
-                        <option class="bg-zinc-800" value="Appliances Repair Technician">Appliances Repair Technician</option>
-                        <option class="bg-zinc-800" value="Blacksmith">Blacksmith</option>
-                        <option class="bg-zinc-800" value="Auto Mechanic">Auto Mechanic</option>
-                        <option class="bg-zinc-800" value="General Maintenance">General Maintenance</option>
-                        <option class="bg-zinc-800" value="">Not Sure</option>
-                    </select>
-                    <h6 class="w-56 text-center bg-zinc-800 px-1 py-1 translate-y-[10px] translate-x-[-177px] text-sm text-emerald-200 rounded-lg">short description of your problem</h6>
-                    <textarea type="text" placeholder="" class="w-150 h-40 p-5 resize-none outline-emerald-400 h-10 border-2 rounded-lg border-emerald-200 text-white" name="content" required></textarea>
-                    <div class="btn flex flex-row justify-between px-5 w-150">
-                        <button class="bg-emerald-200 text-zinc-800 mt-3 py-1 px-3 rounded-lg font-bold" type="reset">RESET</button>
-                        <button class="bg-emerald-200 text-zinc-800 mt-3 py-1 px-3 rounded-lg font-bold" type="submit">SUBMIT</button>
-                    </div>
-                </form> 
+                <!-- LOCATION -->
+                <h1 class="flex items-center text-left text-2xl font-bold">
+                    <box-icon name="map-pin" color="#ffffff" class="mr-2"></box-icon>
+                    You are currently in<span class="text-yellow-300 ml-2"><%= currUser.location.locality %></span>
+                </h1>
+                <!-- GENERATE REQUEST -->
+                <div class="w-full max-w-2xl mx-auto mt-10">
+                    <h1 class="text-3xl font-extrabold text-center mb-8">Generate a Request</h1>
+                    <form action="/post" method="post" class="space-y-8">
+                        <!-- SERVICE TYPE -->
+                        <div class="relative">
+                            <label class="absolute -top-3 left-4 bg-zinc-800 px-2 text-sm text-emerald-300">type of service</label>
+                            <select name="type" class="w-full h-12 px-4 bg-zinc-800 text-white 
+                                    border-2 border-emerald-300 rounded-xl
+                                    focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                                <option value="" disabled selected hidden>-- Select service type --</option>
+                                <option value="Plumber">Plumber</option>
+                                <option value="Electrician">Electrician</option>
+                                <option value="Carpenter">Carpenter</option>
+                                <option value="HVAC Technician">HVAC Technician</option>
+                                <option value="Dentist">Dentist</option>
+                                <option value="Primary Physician">Primary Physician</option>
+                                <option value="Solar Installer">Solar Installer</option>
+                                <option value="Appliances Repair Technician">Appliances Repair Technician</option>
+                                <option value="Blacksmith">Blacksmith</option>
+                                <option value="Auto Mechanic">Auto Mechanic</option>
+                                <option value="General Maintenance">General Maintenance</option>
+                                <option value="">Not Sure</option>
+                            </select>
+                        </div>
+                        <!-- DESCRIPTION -->
+                        <div class="relative">
+                            <label class="absolute -top-3 left-4 bg-zinc-800 px-2 text-sm text-emerald-300">Describe your problem</label>
+                            <textarea name="content" required class="w-full h-56
+                                px-2 pt-5 pb-4
+                                leading-relaxed
+                                bg-zinc-800 text-white
+                                border-2 border-emerald-300
+                                rounded-xl resize-none">
+                            </textarea>
+                        </div>
+                        <!-- BUTTONS -->
+                        <div class="flex justify-between mt-6">
+                            <button type="reset" class="bg-emerald-200 text-zinc-900
+                                    px-6 py-2 rounded-lg
+                                    font-bold hover:bg-emerald-300 transition">RESET
+                            </button>
+                            <button type="submit" class="bg-emerald-200 text-zinc-900
+                                    px-6 py-2 rounded-lg
+                                    font-bold hover:bg-emerald-300 transition">SUBMIT
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div id="myPosts" class="content flex flex-col min-h-screen w-full p-10 gap-3">
@@ -159,7 +182,31 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="/javascripts/location.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("login") === "success") {
+            Swal.fire({
+                toast: true,
+                icon: "success",
+                title: "Signed in successfully",
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        }
+        else if (params.get("register") === "success") {
+            Swal.fire({
+            toast: true,
+            icon: "success",
+            title: "Account created successfully",
+            position: "top-end",
+            timer: 3000,
+            showConfirmButton: false
+            });
+        }
+    </script>
 </body>
 </html>
