@@ -18,8 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", (req,res) => {
-    res.render('landing');
+app.get("/", async (req,res) => {
+    let currUser = null;
+    if( req.cookies.token && req.cookies.token !== ""){
+        let data = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+        currUser = await userModel.findOne({email: data.email});
+    }
+    res.render('landing', {currUser});
 })
 
 app.get("/register", (req,res) => {

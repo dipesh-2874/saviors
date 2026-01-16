@@ -9,25 +9,19 @@ copyBtn.addEventListener("click", () => {
     let val = num.value;
     navigator.clipboard.writeText(val).then(() => {
         alert("Contact Number Copied to Clipboard");
-    })
-    console.log(val);
-    
+    })    
 })
 
 copyBtn1.addEventListener("click", () => {
     let val = num.value;
     navigator.clipboard.writeText(val).then(() => {
         alert("Contact Number Copied to Clipboard");
-    })
-    console.log(val);
-    
+    })    
 })
 
 copyBtn2.addEventListener("click", () => {
     let val = num.value;
     navigator.clipboard.writeText(val).then(() => {
         alert("Contact Number Copied to Clipboard");
-    })
-    console.log(val);
-    
+    })    
 })

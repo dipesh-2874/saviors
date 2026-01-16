@@ -34,7 +34,3 @@ document.getElementById("reg").addEventListener("click", (e) => {
         (err) => alert(err.message)
     );
 });
-
-document.getElementById("availability").addEventListener("change", () => {
-    form2.submit();
-})
