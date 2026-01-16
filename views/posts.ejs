@@ -89,16 +89,21 @@
                                         </a>
                                     </div>
                                     <script>
-                                        document.getElementById("copyBtn_<%= post.user._id %>").addEventListener("click", () => {
+                                        document.getElementById("copyBtn_<%= post.user._id %>").addEventListener("click", (e) => {
+                                            e.preventDefault();
+
                                             let val = document.getElementById("num_<%= post.user._id %>").value;
+
                                             navigator.clipboard.writeText(val).then(() => {
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'Contact Number copied to Clipboard',
-                                                    confirmButtonText: 'OK',
-                                                });
-                                            })
-                                        })
+                                                if (window.Swal) {
+                                                    Swal.fire({
+                                                        icon: 'success',
+                                                        title: 'Contact Number copied to Clipboard',
+                                                        confirmButtonText: 'OK'
+                                                    });
+                                                }
+                                            });
+                                        });
                                     </script>
                                 </div>
                             <% } %>    
