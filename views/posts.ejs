@@ -128,14 +128,14 @@
                                     <div class="btns flex justify-between">
                                         <p></p>
                                         <input id="num_<%= post.user._id %>" class="text-xs translate-y-[-15px]" value="<%= post.user.number %>" readonly hidden>
-                                        <a id="copyBtn_<%= post.user._id %" class="bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="">
+                                        <a id="copyBtn_<%= post.user._id %>" class="bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="">
                                             <box-icon name='plus-circle' color="#ffffff" type='solid' animation='flashing' ></box-icon>
                                             Support
                                         </a>
                                     </div>
                                     <script>
                                         document.getElementById("copyBtn_<%= post.user._id %>").addEventListener("click", () => {
-                                            let val = document.getElementById("num_<%= user._id %>").value;
+                                            let val = document.getElementById("num_<%= post.user._id %>").value;
                                             navigator.clipboard.writeText(val).then(() => {
                                                 Swal.fire({
                                                     icon: 'success',
