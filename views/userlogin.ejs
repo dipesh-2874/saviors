@@ -7,15 +7,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Saviors</title>
 </head>
-<body>
-    <div class="relative main flex flex-col justify-center items-center min-h-screen w-full text-white">
-        <div class="absolute min-h-screen w-full bg-[url(/images/mapbg.png)] bg-cover blur-[3px]"></div>
-        <form class="absolute flex flex-col justify-center items-center h-100 w-150 bg-zinc-800 shadow-xl rounded-lg" action="/userlogin" method="post">
-            <h2 class="text-xl">Logging in as User</h2>
-            <input type="email" class="w-100 mt-5 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Email" name="email" required>
-            <input type="password" class="w-100 mt-3 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Password" name="password" required>
-            <h1 class="text-xs w-100 px-2 text-right">Don't have an account?... <a href="/register" class="text-blue-500"><em>Register</em></a></h1>
-            <button type="submit" class="w-40 mt-3 h-10 bg-blue-500 rounded-lg">Login</button>
+<body class="bg-zinc-800 text-white">
+    <div class="relative min-h-screen flex items-center justify-center px-4">
+        <!-- BACKGROUND -->
+        <div class="absolute inset-0 bg-[url(/images/mapbg.png)] bg-cover bg-center blur-[3px]"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+        <!-- LOGIN FORM -->
+        <form action="/userlogin" method="post" class="relative z-10 w-full max-w-sm bg-zinc-800 rounded-xl shadow-xl p-6 flex flex-col gap-4">
+            <h2 class="text-xl font-bold text-center">Logging in as User</h2>
+            <input type="email" name="email" required placeholder="Email" class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600">
+            <input type="password" name="password" required placeholder="Password" class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600">
+            <!-- TOREGISTER -->
+            <p class="text-xs text-right">Don’t have an account?
+                <a href="/register" class="text-blue-400">Register</a>
+            </p>
+            <!-- LOGIN BUTTON -->
+            <button type="submit" class="h-10 bg-blue-500 rounded-lg font-bold hover:bg-blue-600 transition">Login</button>
         </form>
     </div>
 </body>
