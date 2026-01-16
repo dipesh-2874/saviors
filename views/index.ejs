@@ -7,50 +7,61 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Saviors</title>
 </head>
-<body>
-    <div class="main relative flex flex-col justify-center items-center min-h-screen w-full text-white">
-        <div class="absolute min-h-screen w-full bg-[url(/images/mapbg.png)] bg-cover blur-[3px]"></div>
-        <form id="locform" class="absolute flex flex-col justify-center items-center h-130 w-150 bg-zinc-800 shadow-xl rounded-xl" action="/create" method="post">
-            <h2 class="text-xl mb-2">Register Here...</h2>
-            <div class="savior w-100 flex flex-row">
-                <select name="type" id="type" class="w-92 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg text-zinc-400" required>
-                    <option class="bg-zinc-800 rounded-lg" value="" disabled selected hidden>--Your Designation as a Savior--</option>
-                    <option class="bg-zinc-800" value="Plumber">Plumber</option>
-                    <option class="bg-zinc-800" value="Electrician">Electrician</option>
-                    <option class="bg-zinc-800" value="Carpenter">Carpenter</option>
-                    <option class="bg-zinc-800" value="HVAC Technician">HVAC Technician</option>
-                    <option class="bg-zinc-800" value="Dentist">Dentist</option>
-                    <option class="bg-zinc-800" value="Primary Physician">Primary Physician</option>
-                    <option class="bg-zinc-800" value="Solar Installer">Solar Installer</option>
-                    <option class="bg-zinc-800" value="Appliances Repair Technician">Appliances Repair Technician</option>
-                    <option class="bg-zinc-800" value="Blacksmith">Blacksmith</option>
-                    <option class="bg-zinc-800" value="Auto Mechanic">Auto Mechanic</option>
-                    <option class="bg-zinc-800" value="General Maintenance">General Maintenance</option>
-                    <option class="bg-zinc-800 rounded-lg" value="none">None</option>
+<body class="bg-zinc-900 text-white">
+    <div class="relative min-h-screen flex items-center justify-center px-4">
+        <!-- BACKGROUND -->
+        <div class="absolute inset-0 bg-[url(/images/mapbg.png)] bg-cover bg-center blur-[3px]"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+        <!-- FORM -->
+        <form id="locform" action="/create" method="post" class="relative z-10 w-full max-w-md bg-zinc-800 rounded-xl shadow-xl p-6 flex flex-col gap-3">
+            <h2 class="text-xl font-bold text-center mb-2">Register Here</h2>
+            <!-- SELECT -->
+            <div class="flex items-center gap-2">
+                <select name="type" required class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600 text-zinc-300">
+                    <option value="" disabled selected hidden>--Your Designation as a Savior--</option>
+                    <option value="Plumber">Plumber</option>
+                    <option value="Electrician">Electrician</option>
+                    <option value="Carpenter">Carpenter</option>
+                    <option value="HVAC Technician">HVAC Technician</option>
+                    <option value="Dentist">Dentist</option>
+                    <option value="Primary Physician">Primary Physician</option>
+                    <option value="Solar Installer">Solar Installer</option>
+                    <option value="Appliances Repair Technician">Appliances Repair Technician</option>
+                    <option value="Blacksmith">Blacksmith</option>
+                    <option value="Auto Mechanic">Auto Mechanic</option>
+                    <option value="General Maintenance">General Maintenance</option>
+                    <option value="none">None</option>
                 </select>
-                <div class="info group flex flex-row h-10 w-8 relative cursor-pointer">
-                    <box-icon name='info-circle' class="h-10 w-8 p-1 translate-y-[7px] translate-x-[2px] opacity-80" color='#ffffff'></box-icon>
-                    <div class="w-70 absolute bg-transparent px-4 py-2 pointer-events-none opacity-0 bg-zinc-700 rounded-lg
-                    translate-x-[-10px]
-                    transition-all duration-300
-                    group-hover:opacity-100
-                    group-hover:pointer-events-auto
-                    group-hover:translate-x-[35px]">
-                        <h4 class="text-xs text-zinc-300">If you can provide some services that are in the dropdown to others, then we acknowledge you as a Savior, a Savior of the society.</h4>
+
+                <!-- INFO -->
+                <div class="relative group">
+                    <box-icon name="info-circle" color="#ffffff"></box-icon>
+                    <div class="absolute right-0 top-8 w-56 text-xs bg-zinc-700 p-3 rounded-lg opacity-0 pointer-events-none group-hover:opacity-80 group-hover:pointer-events-auto transition">
+                        If you can provide services listed here, you are considered a
+                        Savior — someone who helps society.
                     </div>
                 </div>
             </div>
-            <input type="text" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Name" name="name" required>
-            <input type="text" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Username" name="username" required>
-            <input type="number" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Age" name="age" required>
-            <input type="number" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Contact Number" name="number" required>
-            <input type="email" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Email" name="email" required>
-            <input type="password" class="w-100 mt-2 h-10 px-5 py-2 border-2 border-zinc-600 rounded-lg" placeholder="Password" name="password" required>
+
+            <!-- INPUTS -->
+            <input class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600" name="name" type="text" placeholder="Name" required>
+            <input class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600" name="username" type="text" placeholder="Username" required>
+            <input class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600" name="age" type="number" placeholder="Age" required>
+            <input class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600" name="number" type="number" placeholder="Contact Number" required>
+            <input class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600" name="email" type="email" placeholder="Email" required>
+            <input class="w-full h-10 px-4 rounded-lg bg-zinc-800 border border-zinc-600" name="password" type="password" placeholder="Password" required>
+            <!-- HIDDEN -->
             <input id="lat" type="number" class="hidden" name="latitude" value=0>
             <input id="long" type="number" class="hidden" name="longitude" value=0>
             <input id="loc" type="text" class="hidden" name="locality" value="Unknown">
-            <h1 class="text-xs w-100 px-2 text-right">Already have an account?... <a href="/userlogin" class="text-blue-500"><em>Login</em></a></h1>
-            <button id="reg" type="submit" class="w-40 mt-2 h-10 bg-blue-500 rounded-lg">Register</button>
+
+            <!-- TOLOGIN -->
+            <p class="text-xs text-right">
+                Already have an account?
+                <a href="/userlogin" class="text-blue-400">Login</a>
+            </p>
+            <!-- SUBMIT BUTTON -->
+            <button id="reg" type="submit" class="mt-2 h-10 bg-blue-500 rounded-lg font-bold hover:bg-blue-600 transition">Register</button>
         </form>
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

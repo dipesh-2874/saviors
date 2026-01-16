@@ -7,13 +7,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Saviors</title>
 </head>
-<body>
-    <div class="main relative flex flex-col justify-center items-center min-h-screen w-full text-white">
-        <div class="absolute min-h-screen w-full bg-[url(/images/mapbg.png)] bg-cover blur-[3px]"></div>
-        <form autocomplete="off" class="absolute flex flex-col justify-center items-center h-50 w-120 bg-zinc-800 shadow-xl rounded-xl" action="/upload" method="post" enctype="multipart/form-data">
-            <h2 class="text-xl mb-2">Upload Your Profile Picture Here...</h2>
-            <input type="file" name="avatar" class="bg-gray-200 text-black rounded-lg px-5 py-2">
-            <button id="reg" type="submit" class="w-40 mt-2 h-10 bg-emerald-300 rounded-lg text-black font-bold">Upload</button>
+<body class="bg-zinc-800 text-white">
+    <div class="relative min-h-screen flex items-center justify-center px-4">
+        <!-- BACKGROUND -->
+        <div class="absolute inset-0 bg-[url(/images/mapbg.png)] bg-cover bg-center blur-[3px]"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <!-- FORM -->
+        <form autocomplete="off" action="/upload" method="post" enctype="multipart/form-data" class="relative z-10 w-full max-w-sm bg-zinc-800 rounded-xl shadow-xl p-6 flex flex-col gap-4">
+        <h2 class="text-lg md:text-xl font-bold text-center">Upload Your Profile Picture</h2>
+        <input type="file" name="avatar" required class="w-full bg-zinc-900 text-zinc-300 rounded-lg px-4 py-2 border border-zinc-600 file:bg-emerald-300 file:text-black file:rounded file:px-4 file:py-1">
+        <button id="reg" type="submit" class="h-10 bg-emerald-300 rounded-lg text-black font-bold hover:bg-emerald-400 transition">Upload</button>
         </form>
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

@@ -9,161 +9,205 @@
 </head>
 <body>
     <div class="main min-h-screen w-full text-white">
-        <div id="navbar" class="navbar fixed flex flex-row justify-between px-10 items-center w-full h-20 bg-zinc-950">
-            <div class="logo h-15 flex items-center gap-2">
-                <img src="/images/logo.png" alt="" class="h-8 rounded-full">
-                <h2 class="text-emerald-200 font-extrabold text-3xl mb-1">Saviors</h2>
+        <nav class="fixed md:static top-0 left-0 w-full bg-zinc-950 z-50">
+            <div class="flex flex-wrap md:flex-nowrap items-center justify-between px-4 md:px-10 min-h-20">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-2 py-2">
+                <img src="/images/logo.png" class="h-8 rounded-full">
+                <h2 class="text-emerald-200 font-extrabold text-2xl md:text-3xl">
+                    Saviors
+                </h2>
+                </div>
+
+                <!-- Nav links -->
+                <div class="navlinks flex flex-wrap md:flex-nowrap justify-center md:justify-end gap-3 md:gap-4 w-full md:w-auto pb-2 md:pb-0 text-sm md:text-base">
+                    <a href="/allSaviors" class="flex items-center gap-1">
+                        <box-icon name="group" color="#34d399"></box-icon>
+                        <h2 class="text-emerald-300 text-lg font-semibold">All Saviors</h2>
+                    </a>
+                    <a href="#knowus" class="flex items-center gap-1">
+                        <box-icon color="#fff59d" animation="tada" name='link' class="h-6 w-6"></box-icon>
+                        <h2 class="text-m text-yellow-200 font-bold">Know Us</h2>
+                    </a>
+                    <a href="/profile" class="flex items-center gap-1">
+                        <box-icon name='user' class="h-6 w-6 invert"></box-icon>
+                        <h2 class="text-m font-bold">Profile</h2>
+                    </a>
+                    <a href="/register" class="flex items-center gap-1">
+                        <box-icon name='user-plus' color="#2196f3" animation="flashing" class="h-6 w-6"></box-icon>
+                        <h2 class="text-m text-blue-500 font-bold">Register or</h2>
+                    </a>
+                    <a href="/userlogin" class="bg-blue-600 px-3 py-1 rounded-lg flex items-center gap-1">
+                        <box-icon name='log-in-circle' animation="flashing" class="h-6 w-6 invert"></box-icon>
+                        <h2 class="text-m font-bold">Login</h2>
+                    </a>
+                </div>
             </div>
-            <div class="navtags flex flex-row gap-2">
-                <a href="/allSaviors" class="flex flex-row items-center gap-2">
-                    <box-icon name='group' color="#34d399"></box-icon>
-                    <h4 class="text-emerald-300 text-lg font-semibold ">All Saviors</h4>
-                </a>
-                <a href="#knowus" class="profile relative h-full px-3 py-2 flex items-center gap-1">
-                    <box-icon color="#fff59d" animation="tada" name='link' class="h-6 w-6"></box-icon>
-                    <h2 class="text-m text-yellow-200 font-bold">Know Us</h2>
-                </a>
-                <a href="/profile" class="profile relative h-full px-3 py-2 flex items-center gap-1">
-                    <box-icon name='user' class="h-6 w-6 invert"></box-icon>
-                    <h2 class="text-m font-bold">Profile</h2>
-                </a>
-                <a href="/register" class="profile relative h-full text-blue-500 px-3 py-2 flex items-center gap-1">
-                    <box-icon name='user-plus' color="#2196f3" animation="flashing" class="h-6 w-6"></box-icon>
-                    <h2 class="text-m font-bold">Register</h2>
-                </a>
-                <p class="or text-m text-blue-500">or</p>
-                <a href="/userlogin" class="profile relative h-full bg-blue-600 px-3 py-2 flex rounded-lg items-center gap-1">
-                    <box-icon name='log-in-circle' animation="flashing" class="h-6 w-6 invert"></box-icon>
-                    <h2 class="text-m font-bold">Login</h2>
-                </a>
-            </div>
-        </div>
-        <div id="home" class="main flex flex-col min-h-screen justify-center bg-zinc-950 text-center inline-center text-white">
+        </nav>
+        <div id="home" class="main flex flex-col min-h-screen justify-center bg-zinc-950 text-center px-4 md:px-16 gap-4 text-white">
             <h2 class="content-contain text-xl font-bold">New Here?!... Wanna know the Saviors around...</h2>
             <h3 class="text-3xl font-bold">Don't you know who the <span class="text-yellow-300">SAVIORS</span> are...</h3>
             <br>
-            <h3 class="text-xl font-bold">Don't worry just hear me out... <a href="#saviors" class="text-blue-500 text-sm">Read More</a></h3>
+            <h3 class="text-xl font-bold">No worries... <a href="#saviors" class="text-blue-500 text-sm">Read More</a></h3>
         </div>
-        <div id="saviors" class="main flex flex-col bg-zinc-950 min-h-screen text-white py-50 px-50">
+        <div id="saviors" class="main bg-zinc-950 min-h-screen text-white py-12 md:py-20 px-4 md:px-16 lg:px-24">
             <h2 class="text-4xl font-bold text-yellow-300">Saviors : </h2>
-            <h3 class="text-lg mt-2 ml-15"><span class="text-emerald-200">So who are they?... why are they important?</span>
+            <h3 class="text-base mt-2 ml-5"><span class="text-emerald-200">So who are they?... why are they important?</span>
             <br>
             Basically saviors is a concept... When you come to a new place, to know the people around you and to settle down you need some service providers
-            like : <br><span class="text-base text-blue-300">Electrician</span>, 
-            <br><span class="text-base text-blue-300">Plumber</span>,
-            <br><span class="text-base text-blue-300">HVAC Technician</span>, 
-            <br><span class="text-base text-blue-300">Carpenter</span>, 
-            <br><span class="text-base text-blue-300">Auto Mechanic</span>, 
-            <br><span class="text-base text-blue-300">Appliances Repair Technician</span>, 
-            <br><span class="text-base text-blue-300">Solar Installer</span>, 
-            <br><span class="text-base text-blue-300">for General Maintenance</span>
-             etc. </h3> 
+            like :</h3>
+            <br>
+            <ul class="ml-10 space-y-1 text-sm">
+                <li>• <span class="text-blue-300 font-semibold">Plumber</span> - to install, repair, and maintain piping systems that carry water, gas, and waste in homes, buildings, and industrial facilities.</li>
+                <li>• <span class="text-blue-300 font-semibold">Electrician</span> - to install, maintain, and repair electrical systems to ensure safe and reliable power in homes, buildings, and industrial settings.</li>
+                <li>• <span class="text-blue-300 font-semibold">Carpenter</span> - to construct, install, and repair structures and items made of wood and wood-based materials.</li>
+                <li>• <span class="text-blue-300 font-semibold">HVAC Technician</span> - to install, maintain, and repair heating, ventilation, and air-conditioning systems to ensure comfortable and safe indoor environments.</li>
+                <li>• <span class="text-blue-300 font-semibold">Dentist</span> - to diagnose, prevent, and treat problems related to teeth, gums, and overall oral health.</li>
+                <li>• <span class="text-blue-300 font-semibold">Primary Physician</span> - to provide first-contact, continuous, and comprehensive medical care for patients of all ages.</li>
+                <li>• <span class="text-blue-300 font-semibold">Solar Installer</span> - to install, maintain, and repair solar energy systems that convert sunlight into usable electricity.</li>
+                <li>• <span class="text-blue-300 font-semibold">Appliance Repair Technician</span> - to diagnose, service, and repair household and commercial appliances to ensure they work safely and efficiently.</li>
+                <li>• <span class="text-blue-300 font-semibold">Blacksmith</span> - to shape and forge metal—usually iron or steel—by heating it and working it with tools to create useful or decorative items.</li>
+                <li>• <span class="text-blue-300 font-semibold">Auto Mechanic</span> - to inspect, diagnose, maintain, and repair vehicles to keep them running safely and efficiently.</li>
+                <li>• <span class="text-blue-300 font-semibold">General Maintenance</span> - to inspect, repair, and maintain buildings, equipment, and facilities to keep them safe, functional, and in good condition.</li>
+            </ul> 
         </div>
-        <div id="knowus" class="main flex flex-col min-h-screen justify-center bg-zinc-950 items-center inline-center text-white">
-            <div id="profiles" class="profiles flex flex-col bg-zinc-950 w-200 rounded-lg px-15 py-25 gap-10">
-                <h2 class="text-2xl text-yellow-200 font-extrabold text-center">Yeah We're Here...</h2>
-                <div class="contain flex flex-row justify-between">
-                    <div class="ids flex flex-col">
-                        <img class="rounded-full w-30 h-30 object-contain" src="https://media.licdn.com/dms/image/v2/D4E03AQGaRdjnLLj-tw/profile-displayphoto-shrink_400_400/B4EZV.svYwHMAk-/0/1741587414578?e=1769040000&v=beta&t=FDjyVfNdign0DiLX3jVEr7A3K8xvKVDI9ZIcCVJSb1c" alt="">
-                        <div class="icons px-5 w-30 flex justify-between mt-2">
-                            <a target="_blank" href="https://www.linkedin.com/in/d1p3sh-d4s-4b1dd3n/"><box-icon color="#0077B5" class="w-8 h-8" name='linkedin-square' type='logo' animation='burst' ></box-icon></a>
-                            <a target="_blank" href="https://github.com/dipesh-2874"><box-icon class="w-8 h-8" color="#ffffff" name='github' type='logo' animation='burst' ></box-icon></a>
+        <div id="knowus" class="min-h-screen flex items-center justify-center bg-zinc-950 text-white px-4">
+            <div class="bg-zinc-900 rounded-lg w-full max-w-5xl p-6 md:p-10 space-y-8">
+                <h2 class="text-2xl md:text-3xl text-yellow-200 font-extrabold text-center">Yeah, We’re Here…</h2>
+                <!-- PROFILES GRID -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- CARD -->
+                    <div class="flex flex-col items-center">
+                        <img class="rounded-full w-24 h-24 md:w-28 md:h-28 object-cover" src="https://media.licdn.com/dms/image/v2/D4E03AQGaRdjnLLj-tw/profile-displayphoto-shrink_400_400/B4EZV.svYwHMAk-/0/1741587414578?e=1769040000&v=beta&t=FDjyVfNdign0DiLX3jVEr7A3K8xvKVDI9ZIcCVJSb1c">
+                        <div class="flex gap-4 mt-3">
+                            <a target="_blank" href="https://www.linkedin.com/in/d1p3sh-d4s-4b1dd3n/">
+                                <box-icon type="logo" name="linkedin-square" animation='burst' color="#0077B5"></box-icon>
+                            </a>
+                            <a target="_blank" href="https://github.com/dipesh-2874">
+                                <box-icon type="logo" name="github" animation='burst' color="#ffffff"></box-icon>
+                            </a>
                         </div>
-                        <h4 class="text-sm text-center font-extrabold">Dipesh Das</h4>
+                        <h4 class="text-sm font-bold mt-2">Dipesh Das</h4>
                     </div>
-                    <div class="ids flex flex-col">
-                        <img class="rounded-full w-30 h-30 object-contain" src="https://media.licdn.com/dms/image/v2/D4E03AQGkHgt1XANf-A/profile-displayphoto-scale_400_400/B4EZnYzCtdKgAg-/0/1760278887385?e=1769040000&v=beta&t=dok4b0ADaD1xp5EbNgFyS1AG0w-I1W8gs5VgFysaTAw" alt="">
-                        <div class="icons px-5 w-30 flex justify-between mt-2">
-                            <a target="_blank" href="https://www.linkedin.com/in/mrinmoy-mahato-6a7262324/"><box-icon color="#0077B5" class="w-8 h-8" name='linkedin-square' type='logo' animation='burst' ></box-icon></a>
-                            <a target="_blank" href="https://github.com/sh33r0"><box-icon class="w-8 h-8" color="#ffffff" name='github' type='logo' animation='burst' ></box-icon></a>
+
+                    <div class="flex flex-col items-center">
+                        <img class="rounded-full w-24 h-24 md:w-28 md:h-28 object-cover" src="https://media.licdn.com/dms/image/v2/D4E03AQGkHgt1XANf-A/profile-displayphoto-scale_400_400/B4EZnYzCtdKgAg-/0/1760278887385?e=1769040000&v=beta&t=dok4b0ADaD1xp5EbNgFyS1AG0w-I1W8gs5VgFysaTAw">
+                        <div class="flex gap-4 mt-3">
+                            <a target="_blank" href="https://www.linkedin.com/in/mrinmoy-mahato-6a7262324/">
+                                <box-icon type="logo" name="linkedin-square" animation='burst' color="#0077B5"></box-icon>
+                            </a>
+                            <a target="_blank" href="https://github.com/sh33r0">
+                                <box-icon type="logo" name="github" animation='burst' color="#ffffff"></box-icon>
+                            </a>
                         </div>
-                        <h4 class="text-sm text-center font-extrabold">Mrinmoy Mahato</h4>
+                        <h4 class="text-sm font-bold mt-2">Mrinmoy Mahato</h4>
                     </div>
-                    <div class="ids flex flex-col">
-                        <img class="rounded-full w-30 h-30 object-contain" src="https://media.licdn.com/dms/image/v2/D5603AQGC2_UCbnq1Zg/profile-displayphoto-shrink_400_400/B56ZVGhDvBHsAk-/0/1740644826653?e=1769040000&v=beta&t=kcoCEz5_NnOtx0D_1bsA81UjQQnw5qM49t518jSeeuo" alt="">
-                        <div class="icons px-5 w-30 flex justify-between mt-2">
-                            <a target="_blank" href="https://www.linkedin.com/in/priyatosh-pal/"><box-icon color="#0077B5" class="w-8 h-8" name='linkedin-square' type='logo' animation='burst' ></box-icon></a>
-                            <a target="_blank" href="https://github.com/dipesh-2874"><box-icon class="w-8 h-8" color="#ffffff" name='github' type='logo' animation='burst' ></box-icon></a>
+
+                    <div class="flex flex-col items-center">
+                        <img class="rounded-full w-24 h-24 md:w-28 md:h-28 object-cover" src="https://media.licdn.com/dms/image/v2/D5603AQGC2_UCbnq1Zg/profile-displayphoto-shrink_400_400/B56ZVGhDvBHsAk-/0/1740644826653?e=1769040000&v=beta&t=kcoCEz5_NnOtx0D_1bsA81UjQQnw5qM49t518jSeeuo">
+                        <div class="flex gap-4 mt-3">
+                        <a target="_blank" href="https://www.linkedin.com/in/priyatosh-pal/">
+                            <box-icon type="logo" name="linkedin-square" animation='burst' color="#0077B5"></box-icon>
+                        </a>
+                        <a target="_blank" href="https://github.com/dipesh-2874">
+                            <box-icon type="logo" name="github" animation='burst' color="#ffffff"></box-icon>
+                        </a>
                         </div>
-                        <h4 class="text-sm text-center font-extrabold">Priyatosh Pal</h4>
+                        <h4 class="text-sm font-bold mt-2">Priyatosh Pal</h4>
                     </div>
                 </div>
-                <a href="#rights" class="text-xs text-blue-500 text-center">connect with us</a>
+                <a href="#rights" class="block text-center text-sm text-blue-500">
+                Connect with us
+                </a>
             </div>
         </div>
-        <div id="rights" class="rights main flex flex-col h-[80vh] justify-between bg-zinc-950 items-center inline-center text-white px-7">
-            <div class="links w-full h-[60vh] px-10 py-20 flex flex-row justify-between border-t-1">
-                <div class="socials flex flex-col justify-center">
-                    <img src="/images/logo_alt.png" alt="" class="h-18 w-18 rounded-full">
-                    <h2>Let's connect with our socials</h2>
-                    <div class="flex flex-row social-media h-10 w-full mt-1 gap-5">
-                        <a target="_blank" href="https://www.instagram.com/_room_no_28._">
-                            <box-icon type='logo' class="h-8 w-8" name='instagram-alt' color="#ffffff"></box-icon>
+        <footer id="rights" class="bg-zinc-950 text-white border-t border-zinc-800">
+            <div class="max-w-7xl mx-auto px-4 md:px-10 py-12">
+                <!-- MAIN GRID -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- SOCIAL -->
+                <div class="space-y-2">
+                    <img src="/images/logo_alt.png" class="h-16 w-16 rounded-full">
+                    <p class="text-sm">Let’s connect with our socials</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/_room_no_28._" target="_blank">
+                            <box-icon type="logo" name="instagram-alt" color="#ffffff"></box-icon>
                         </a>
-                        <a target="_blank" href="">
-                            <box-icon type='logo' class="h-8 w-8" name='linkedin-square' color="#ffffff"></box-icon>
+                        <a href="#" target="_blank">
+                            <box-icon type="logo" name="linkedin-square" color="#ffffff"></box-icon>
                         </a>
-                        <a target="_blank" href="https://discord.gg/nTPPQkSB">
-                            <box-icon type='logo' class="h-8 w-8" name='discord-alt' color="#ffffff"></box-icon>
+                        <a href="https://discord.gg/nTPPQkSB" target="_blank">
+                            <box-icon type="logo" name="discord-alt" color="#ffffff"></box-icon>
                         </a>
-                        <a target="_blank" href="">
-                            <box-icon type='logo' class="h-8 w-8" name='twitter' color="#ffffff"></box-icon>
+                        <a href="#" target="_blank">
+                            <box-icon type="logo" name="twitter" color="#ffffff"></box-icon>
                         </a>
                     </div>
+
                     <div class="host flex flex-row h-10 p-1 gap-3 items-center mt-5">
                         <h4>Hosted with : </h4>
                         <a target="_blank" href="https://github.com/dipesh-2874/saviors" class="flex items-center">
                             <box-icon name='github' class="h-7 w-7" type='logo' color='#ffffff' ></box-icon>
                         </a>
                     </div>
-                    <div class="flex flex-row gap-2">
+                    <div class="flex flex-row gap-2 translate-y-[-20px]">
                         <h4 class="translate-y-[2px] font-semibold">&</h4>
                         <a target="_blank" href="https://render.com" id="render" class="text-4xl font-extrabold text-zinc-900"><em>RENDER</em></a>
                     </div>
                 </div>
-                <div class="company flex flex-col py-20 gap-5">
-                    <h2 class="text-xl font-bold">COMPANY</h2>
-                    <div class="links flex flex-col gap-2">
-                        <a href="#knowus" class="hover:text-emerald-300">About Us</a>
-                        <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=saviors127@gmail.com" class="hover:text-emerald-300">Support</a>
-                        <a href="#" class="hover:text-emerald-300">Privacy Policy</a>
-                        <a href="#" class="hover:text-emerald-300">Terms & Conditions</a>
-                    </div>
+
+                <!-- COMPANY -->
+                <div class="space-y-3">
+                    <h2 class="font-bold text-lg">COMPANY</h2>
+                    <a href="#knowus" class="block hover:text-emerald-300">About Us</a>
+                    <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=saviors127@gmail.com" class="block hover:text-emerald-300">Support</a>
+                    <a href="#" class="block hover:text-emerald-300">Privacy Policy</a>
+                    <a href="#" class="block hover:text-emerald-300">Terms & Conditions</a>
                 </div>
-                <div class="community flex flex-col py-20 gap-5">
-                    <h2 class="text-xl font-bold gap-2">COMMUNITY</h2>
-                    <div class="links flex flex-col gap-2">
-                        <a target="_blank" href="https://discord.gg/nTPPQkSB" class="hover:text-emerald-300">Discord</a>
-                        <a target="_blank" href="https://chat.whatsapp.com/FRRXFglDDFR9BrycoeP0Nu" class="hover:text-emerald-300">Whatsapp</a>
-                    </div>
+
+                <!-- COMMUNITY -->
+                <div class="space-y-3">
+                    <h2 class="font-bold text-lg">COMMUNITY</h2>
+                    <a href="https://discord.gg/nTPPQkSB" target="_blank" class="block hover:text-emerald-300">Discord</a>
+                    <a href="https://chat.whatsapp.com/FRRXFglDDFR9BrycoeP0Nu" target="_blank" class="block hover:text-emerald-300">WhatsApp</a>
                 </div>
-                <div class="getInTouch flex flex-col py-20 gap-5">
-                    <h2 class="text-xl font-bold gap-2">Get In Touch</h2>
-                    <div class="links flex flex-col gap-2">
-                        <div class="number flex flex-row">
-                            <input id="num" class="font-semibold cursor-pointer w-30" value="+919733717805" readonly>
-                            <box-icon id="copyBtn" name='copy' class="h-5 w-5 translate-y-[2px] cursor-pointer" color='#ffffff' ></box-icon>
-                        </div>
-                        <div class="number flex flex-row">
-                            <input id="num1" class="font-semibold cursor-pointer w-30" value="+919142051776" readonly>
-                            <box-icon id="copyBtn1" name='copy' class="h-5 w-5 translate-y-[2px] cursor-pointer" color='#ffffff' ></box-icon>
-                        </div>
-                        <div class="number flex flex-row">
-                            <input id="num2" class="font-semibold cursor-pointer w-30" value="+918653500518" readonly>
-                            <box-icon id="copyBtn2" name='copy' class="h-5 w-5 translate-y-[2px] cursor-pointer" color='#ffffff' ></box-icon>
-                        </div>
-                        <h2>saviors127@gmail.com</h2>
-                        <h2 class="w-70 font-light">P.C.Roy Hall, Hostel No.1, Jalpaiguri Government Engineering College, Jalpaiguri, West Bengal, Pin: 735102.</h2>
+
+                <!-- CONTACT -->
+                <div class="space-y-3 text-sm">
+                    <h2 class="font-bold text-lg">Get in Touch</h2>
+
+                    <div class="flex items-center gap-2">
+                        <input id="num" class="font-semibold cursor-pointer w-27" value="+91 97337 17805" readonly>
+                        <box-icon id="copyBtn" name='copy' class="h-5 w-5 cursor-pointer" color='#ffffff' ></box-icon>
                     </div>
+                    <div class="flex items-center gap-2">
+                        <input id="num1" class="font-semibold cursor-pointer w-27" value="+91 91420 51776" readonly>
+                        <box-icon id="copyBtn1" name='copy' class="h-5 w-5 cursor-pointer" color='#ffffff' ></box-icon>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input id="num2" class="font-semibold cursor-pointer w-27" value="+91 86535 00518" readonly>
+                        <box-icon id="copyBtn2" name='copy' class="h-5 w-5 cursor-pointer" color='#ffffff' ></box-icon>
+                    </div>
+                    <p>saviors127@gmail.com</p>
+                    <p class="text-xs text-zinc-300">
+                    P.C. Roy Hall, Hostel No.1, JGEC, Jalpaiguri, West Bengal – 735102
+                    </p>
                 </div>
+
+                </div>
+
+                <!-- COPYRIGHT -->
+                <div class="border-t border-zinc-800 mt-10 pt-4 text-center text-sm">
+                <p class="font-semibold">Copyright © 2026 Saviors</p>
+                <p class="text-zinc-400">All Rights Reserved</p>
+                </div>
+
             </div>
-            <div class="copyright h-15 w-full border-t-1 text-center py-1">
-                <h1 class="font-bold">Copyright © 2026 Saviors</h1>
-                <h2 class="font-semibold">All Rights Reserved.</h2>
-            </div>
-        </div>
+        </footer>
+
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="/javascripts/copy.js"></script>
 </body>
-</html>
+</html>    
