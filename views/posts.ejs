@@ -58,53 +58,8 @@
             <h1 class="mt-20 text-2xl font-extrabold text-blue-500">All Requests</h1>
             <div class="posts mt-7 flex flex-wrap gap-5">
                 <% if(posts.length !== 0){ %>
-                    <% posts.reverse().forEach((post) => { %>
+                    <% posts.forEach((post) => { %>
                             <% if(post.user.location.locality === currUser.location.locality){ %>
-                                <div class="post flex flex-col justify-between w-110 h-90 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-5 py-4">
-                                    <div class="pcont flex flex-col w-full gap-2">
-                                        <div class="userdata flex flex-row gap-1 items-center">
-                                            <img src="/images/uploads/<%= post.user.avatar %>" alt="" class="h-13 w-13 translate-y-[4px] rounded-full">
-                                            <div class="ids flex flex-col">
-                                                <h2 class="text-base font-bold translate-y-[7px]"><%= post.user.name %>
-                                                    <% if(post.user.type === null){ %>
-                                                    <% } else { %>
-                                                        <span class="text-sm font-base text-zinc-400">(<%= post.user.type %>)</span>
-                                                    <% } %>
-                                                </h2>
-                                                <h2 class="text-sm"><%= post.user.location.locality %></h2>
-                                                <h5 class="date text-xs text-zinc-400 translate-y-[-3px]"><%= post.date %></h5>
-                                            </div>
-                                        </div>
-                                        <% if(post.type && post.type !== ""){ %>
-                                            <h1 class="text-xl font-bold text-white"><%= post.type %></h1>
-                                        <% } %>
-                                        <h3 class="text-base font-semibold text-white"><%= post.content %></h3>
-                                    </div>
-                                    <div class="btns flex justify-between">
-                                        <p></p>
-                                        <input id="num_<%= post.user._id %>" class="text-xs translate-y-[-15px]" value="<%= post.user.number %>" readonly hidden>
-                                        <a id="copyBtn_<%= post.user._id %>" class="bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="">
-                                            <box-icon name='plus-circle' color="#ffffff" type='solid' animation='flashing' ></box-icon>
-                                            Support
-                                        </a>
-                                    </div>
-                                    <script>
-                                        document.getElementById("copyBtn_<%= post.user._id %>").addEventListener("click", () => {
-                                            let val = document.getElementById("num_<%= user._id %>").value;
-                                            navigator.clipboard.writeText(val).then(() => {
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'Contact Number copied to Clipboard',
-                                                    confirmButtonText: 'OK',
-                                                });
-                                            })
-                                        })
-                                    </script>
-                                </div>
-                            <% } %>    
-                        <% }) %>
-                    <% posts.reverse().forEach((post) => { %>
-                            <% if(post.user.location.locality !== currUser.location.locality){ %>
                                 <div class="post flex flex-col justify-between w-110 h-90 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-5 py-4">
                                     <div class="pcont flex flex-col w-full gap-2">
                                         <div class="userdata flex flex-row gap-1 items-center">
@@ -144,6 +99,56 @@
                                                 });
                                             })
                                         })
+                                    </script>
+                                </div>
+                            <% } %>    
+                        <% }) %>
+                    <% posts.forEach((post) => { %>
+                            <% if(post.user.location.locality !== currUser.location.locality){ %>
+                                <div class="post flex flex-col justify-between w-110 h-90 bg-zinc-700 rounded-lg border-[1px] border-zinc-500 px-5 py-4">
+                                    <div class="pcont flex flex-col w-full gap-2">
+                                        <div class="userdata flex flex-row gap-1 items-center">
+                                            <img src="/images/uploads/<%= post.user.avatar %>" alt="" class="h-13 w-13 translate-y-[4px] rounded-full">
+                                            <div class="ids flex flex-col">
+                                                <h2 class="text-base font-bold translate-y-[7px]"><%= post.user.name %>
+                                                    <% if(post.user.type === null){ %>
+                                                    <% } else { %>
+                                                        <span class="text-sm font-base text-zinc-400">(<%= post.user.type %>)</span>
+                                                    <% } %>
+                                                </h2>
+                                                <h2 class="text-sm"><%= post.user.location.locality %></h2>
+                                                <h5 class="date text-xs text-zinc-400 translate-y-[-3px]"><%= post.date %></h5>
+                                            </div>
+                                        </div>
+                                        <% if(post.type && post.type !== ""){ %>
+                                            <h1 class="text-xl font-bold text-white"><%= post.type %></h1>
+                                        <% } %>
+                                        <h3 class="text-base font-semibold text-white"><%= post.content %></h3>
+                                    </div>
+                                    <div class="btns flex justify-between">
+                                        <p></p>
+                                        <input id="num_<%= post.user._id %>" class="text-xs translate-y-[-15px]" value="<%= post.user.number %>" readonly hidden>
+                                        <a id="copyBtn_<%= post.user._id %>" class="bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="">
+                                            <box-icon name='plus-circle' color="#ffffff" type='solid' animation='flashing' ></box-icon>
+                                            Support
+                                        </a>
+                                    </div>
+                                    <script>
+                                        document.getElementById("copyBtn_<%= post.user._id %>").addEventListener("click", (e) => {
+                                            e.preventDefault();
+
+                                            let val = document.getElementById("num_<%= post.user._id %>").value;
+
+                                            navigator.clipboard.writeText(val).then(() => {
+                                                if (window.Swal) {
+                                                    Swal.fire({
+                                                        icon: 'success',
+                                                        title: 'Contact Number copied to Clipboard',
+                                                        confirmButtonText: 'OK'
+                                                    });
+                                                }
+                                            });
+                                        });
                                     </script>
                                 </div>
                             <% } %>    

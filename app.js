@@ -118,6 +118,7 @@ app.post("/rateAll/:id",isLoggedIn, async (req,res) => {
 app.get("/post", isLoggedIn, async (req,res) => {
     let posts = await postModel.find().populate("user");
     let currUser = await userModel.findOne({email: req.user.email}).populate("posts");
+    posts = posts.reverse();
     res.render('posts', {currUser, posts});
 })
 
