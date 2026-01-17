@@ -46,10 +46,14 @@ app.get("/profile/avatar", isLoggedIn, (req, res) => {
 })
 
 app.post("/upload", isLoggedIn, upload.single("avatar"), async (req, res) => {
-    let user = await userModel.findOne({email: req.user.email});
-    user.avatar = req.file.filename;
-    await user.save();
-    res.redirect("/profile");
+    try{
+        let user = await userModel.findOne({email: req.user.email});
+        user.avatar = req.file.buffer;
+        await user.save();
+        res.redirect("/profile");
+    } catch(err) {
+        res.send(err.message);
+    }
   }
 );
 

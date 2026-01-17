@@ -19,8 +19,8 @@ const userSchema = mongoose.Schema({
     },
     password: String,
     avatar: {
-        type: String,
-        default: "default.png"
+        type: Buffer,
+        default: null
     },
     posts: [
         {
