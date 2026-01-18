@@ -136,10 +136,11 @@
                                 </div>
                             </div>
                             <div class="container flex flex-row justify-between mb-3">
-                                <form id="rateform" method="post" action="/rate/<%= user._id %>">
-                                    <input id="rating" name="rating" type="number" hidden value=0>
-                                    <button type="submit" id="rate" class="flex items-center gap-1 bg-yellow-300 px-2 py-1 rounded-lg text-zinc-700 font-semibold cursor-pointer">
-                                        <box-icon name='star' type="solid" class="h-5 w-5" color='#3f3f47' ></box-icon>
+                                <form class="rateform" method="post" action="/rate/<%= user._id %>">
+                                    <input class="ratingInput" name="rating" type="hidden" value="0">
+                                    <button type="button"
+                                        class="rateBtn flex items-center gap-1 bg-yellow-300 px-2 py-1 rounded-lg text-zinc-700 font-semibold cursor-pointer">
+                                        <box-icon name='star' type="solid" class="pointer-events-none" color='#3f3f47'></box-icon>
                                         Rate
                                     </button>
                                 </form>
@@ -167,9 +168,46 @@
             </div>
         </div>
     </div>
+    <div class="chatbot fixed bottom-10 right-10 z-[9999]">
+        <button id="botIcon" class="h-14 w-14 rounded-full
+            bg-emerald-500 hover:bg-emerald-600
+            flex items-center justify-center
+            shadow-2xl transition">
+            <box-icon name="bot" animation="flashing" color="#ffffff" size="md"></box-icon>
+        </button>
+        <div id="chatBox" class="fixed inset-0 z-50 hidden text-white">
+            <div id="chatBackdrop" class="absolute inset-0 bg-black/60"></div>
+            <div id="openChat" class="absolute right-0 top-0 h-full w-120 bg-zinc-900 p-6 flex flex-col transform translate-x-full transition-transform duration-300">
+                <button id="closeChat" class="self-start">
+                    <box-icon name="last-page" color="#ffffff"></box-icon>
+                </button>
+                <div class="head px-4 mb-2 flex justify-center items-center font-bold">
+                    <h2>SaviorBOT 🤖</h2>
+                </div>
+                <div class="chat-container flex flex-col px-2 h-[85vh]">
+                    <div id="chatbox" class="box">
+                        <div class="botmsg">
+                            Hey There <%= currUser.username %>! Good to see you... How can I help you?
+                        </div>
+                    </div>
+                    <div class="inputs flex justify-between w-full mt-3">
+                        <input type="text" id="userinput" class="w-80 h-10 p-2 border border-zinc-400 rounded-lg" placeholder="Enter your message...">
+                        <input type="file" accept="images/*" id="fileInput" hidden>
+                        <button id="fileUpload" class="bg-white w-10 h-10 rounded-full hover:bg-zinc-300 flex justify-center items-center">
+                            <box-icon name='link-alt' class="w-8 h-8" color='#002819' ></box-icon>
+                        </button>
+                        <button id="sendBtn" class="bg-emerald-500 w-10 h-10 rounded-full hover:bg-emerald-600 flex justify-center items-center">
+                            <box-icon name='up-arrow-alt' class="w-8 h-8" color='#ffffff' ></box-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/javascripts/rate.js"></script>
+    <script src="/javascripts/chatbot.js"></script>
     <script src="/javascripts/sideNav.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

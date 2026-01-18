@@ -1,34 +1,34 @@
-const rate = document.getElementById("rate");
-const rating = document.getElementById("rating");
-const form = document.getElementById("rateform");
+document.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".rateBtn");
+    if (!btn) return;
 
-rate.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const inputOptions = new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                1: "1",
-                2: "2",
-                3: "3",
-                4: "4",
-                5: "5"
-            });
-        }, 1000);
-    });
+    const form = btn.closest(".rateform");
+    const ratingInput = form.querySelector(".ratingInput");
+
     const { value: num } = await Swal.fire({
-        title: "Give your best ratings!!",
+        title: "Give your best rating ⭐",
         input: "radio",
-        inputOptions,
+        inputOptions: {
+            1: "1",
+            2: "2",
+            3: "3",
+            4: "4",
+            5: "5"
+        },
         inputValidator: (value) => {
-            if (!value) {
-            return "You need to choose something!";
-            }
+            if (!value) return "Please select a rating!";
         }
     });
-    if (num) {
-        rating.value = Number(num);
-        console.log(rating.value);
-        Swal.fire({ html: `Response submitted... Thank you!!` });
-    }
+
+    if (!num) return;
+
+    ratingInput.value = Number(num);
+
+    await Swal.fire({
+        icon: "success",
+        title: "Thank you!",
+        text: "Your rating has been submitted."
+    });
+
     form.submit();
-})
+});

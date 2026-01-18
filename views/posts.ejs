@@ -218,6 +218,43 @@
             </div>
         </div>
     </div>
+    <div class="chatbot fixed bottom-10 right-10 z-[9999]">
+        <button id="botIcon" class="h-14 w-14 rounded-full
+            bg-emerald-500 hover:bg-emerald-600
+            flex items-center justify-center
+            shadow-2xl transition">
+            <box-icon name="bot" animation="flashing" color="#ffffff" size="md"></box-icon>
+        </button>
+        <div id="chatBox" class="fixed inset-0 z-50 hidden text-white">
+            <div id="chatBackdrop" class="absolute inset-0 bg-black/60"></div>
+            <div id="openChat" class="absolute right-0 top-0 h-full w-120 bg-zinc-900 p-6 flex flex-col transform translate-x-full transition-transform duration-300">
+                <button id="closeChat" class="self-start">
+                    <box-icon name="last-page" color="#ffffff"></box-icon>
+                </button>
+                <div class="head px-4 mb-2 flex justify-center items-center font-bold">
+                    <h2>SaviorBOT 🤖</h2>
+                </div>
+                <div class="chat-container flex flex-col px-2 h-[85vh]">
+                    <div id="chatbox" class="box">
+                        <div class="botmsg">
+                            Hey There <%= currUser.username %>! Good to see you... How can I help you?
+                        </div>
+                    </div>
+                    <div class="inputs flex justify-between w-full mt-3">
+                        <input type="text" id="userinput" class="w-80 h-10 p-2 border border-zinc-400 rounded-lg" placeholder="Enter your message...">
+                        <input type="file" accept="images/*" id="fileInput" hidden>
+                        <button id="fileUpload" class="bg-white w-10 h-10 rounded-full hover:bg-zinc-300 flex justify-center items-center">
+                            <box-icon name='link-alt' class="w-8 h-8" color='#002819' ></box-icon>
+                        </button>
+                        <button id="sendBtn" class="bg-emerald-500 w-10 h-10 rounded-full hover:bg-emerald-600 flex justify-center items-center">
+                            <box-icon name='up-arrow-alt' class="w-8 h-8" color='#ffffff' ></box-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/chatbot.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/javascripts/sideNav.js"></script>
