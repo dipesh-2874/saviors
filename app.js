@@ -11,12 +11,14 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const upload = require("./config/multerconfig");
 
-
 app.use(cookieParser());
 app.set('view engine', 'ejs');
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const chatRoute = require("./routes/chat");
+app.use("/api", chatRoute);
 
 app.get("/", async (req,res) => {
     let currUser = null;

@@ -108,7 +108,13 @@
                                 <h2 class="text-red-400 font-bold"><%= user.availability %></h2>
                             <% } %>    
                             <div class="data">
-                                <div class="provdata w-full h-60 bg-[url(/images/uploads/<%= user.avatar %>)] bg-cover rounded-md"></div>
+                                <div class="provdata w-full h-60 rounded-md overflow-hidden">
+                                    <% if(user.avatar){ %>
+                                        <img src="data:image/jpeg;base64,<%= user.avatar.toString('base64') %>" alt="" class="h-full w-full object-cover">
+                                    <% } else { %>
+                                        <img src="/images/uploads/default.png" alt="" class="h-full w-full object-cover">
+                                    <% } %>
+                                </div>
                                 <h1 class="text-xl font-bold mt-1"><%= user.name %></h1>
                                 <h2 class="text-base font-semibold translate-y-[-5px]"><%= user.type %></h2>
                                 <h2 class="text-sm font-semibold text-zinc-400 translate-y-[-10px]"><%= user.location.locality %></h2>
