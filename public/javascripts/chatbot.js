@@ -4,6 +4,8 @@ const sendBtn = document.getElementById("sendBtn");
 const fileInput = document.getElementById("fileInput");
 const fileUpload = document.getElementById("fileUpload");
 
+let chatHistory = [];
+
 function addMessage(msg, className) {
     const msgDiv = document.createElement("div");
     msgDiv.classList.add(className);
@@ -21,19 +23,41 @@ function showTyping(){
     return typingDiv;
 }
 
+let isSending = false;
 sendBtn.onclick = async () => {
-    const msg = userInput.value.trim();
-    if(msg === "") return;
-    addMessage(msg, "usermsg"); 
-    userInput.value = "";
-    const typingDiv = showTyping();  
-    
-    const botReply = await getBotReply(msg);
-    typingDiv.remove();
-    addMessage(botReply, "botmsg");
+    if (isSending) return;
+    isSending = true;
+    try {
+        const msg = userInput.value.trim();
+        if (msg === "") return;
 
-    localStorage.setItem("chatHistory", chatbox.innerHTML);
-}
+        addMessage(msg, "usermsg");
+
+        chatHistory.push({
+            role: "user",
+            text: msg,
+            image: uploadedImageBase64,
+            mimeType: uploadedImageMime
+        });
+
+        userInput.value = "";
+        const typingDiv = showTyping();
+
+        const botReply = await getBotReply();
+        typingDiv.remove();
+
+        addMessage(botReply, "botmsg");
+
+        chatHistory.push({
+            role: "model",
+            text: botReply
+        });
+    } finally {
+        setTimeout(() => {
+            isSending = false;
+        }, 1500);
+    }
+};
 
 function addImagePreview(base64) {
     const imgDiv = document.createElement("div");
@@ -54,15 +78,14 @@ userInput.addEventListener("keypress", (e) => {
     if(e.key === "Enter") sendBtn.click();
 })
 
-async function getBotReply(msg) {
+async function getBotReply() {
     try {
+        const safeHistory = chatHistory.slice(-6);
         const res = await fetch("/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                message: msg,
-                image: uploadedImageBase64,
-                mimeType: uploadedImageMime 
+                history: safeHistory
             })
         });
 
@@ -79,6 +102,7 @@ async function getBotReply(msg) {
         return "❌ Server error.";
     }
 }
+
 
 
 let uploadedImageBase64 = null;
@@ -109,3 +133,4 @@ fileInput.addEventListener("change", () => {
 });
 
 fileUpload.addEventListener("click", () => fileInput.click())
+
