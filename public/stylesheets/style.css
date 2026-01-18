@@ -33,11 +33,15 @@
 
 .usermsg, .botmsg{
     margin: 10px 0;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 80%;
-    line-height: 1.2;
-    font-size: 0.8rem;
+    padding: 10px 14px;
+    border-radius: 14px;
+    max-width: 90%;
+    width: fit-content;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.5;
+    font-size: 0.85rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -54,10 +58,54 @@
     margin-top: 6px;
 }
 
-
 .botmsg{
     background: #000000;
     background: linear-gradient(56deg, rgba(0, 0, 0, 1) 0%, rgba(59, 59, 59, 1) 100%, rgba(168, 168, 168, 1) 100%);
     color: white;
     align-self: flex-start;
+}
+
+.botmsg p,
+.botmsg li,
+.botmsg strong,
+.botmsg em,
+.botmsg span {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.botmsg pre,
+.botmsg code {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.box{
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    background-color: rgba(95, 158, 160, 0.222);
+    border: 1px solid rgb(159, 159, 169);
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+
+    #openChat {
+        width: 100% !important;
+        padding: 12px;
+    }
+
+    .usermsg,
+    .botmsg {
+        max-width: 95%;
+        font-size: 0.8rem;
+    }
+
+    #userinput {
+        width: 100%;
+        font-size: 0.8rem;
+    }
 }

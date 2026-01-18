@@ -4,10 +4,10 @@ const sendBtn = document.getElementById("sendBtn");
 const fileInput = document.getElementById("fileInput");
 const fileUpload = document.getElementById("fileUpload");
 
-function addMessage(msg, className){
+function addMessage(msg, className) {
     const msgDiv = document.createElement("div");
     msgDiv.classList.add(className);
-    msgDiv.textContent = msg;
+    msgDiv.innerHTML = marked.parse(msg);
     chatbox.appendChild(msgDiv);
     chatbox.scrollTop = chatbox.scrollHeight;
 }
