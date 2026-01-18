@@ -20,11 +20,12 @@ The Saviors project is designed to demonstrate:
 
 ## ✨ Features
 
-- 📱 **Service Provider Details** – The application provides information about nearby essential service providers (referred to as Saviours), such as plumbers, electricians, and other daily-life professionals.
+- 📱 **Service Provider Details** – The application provides information about nearby essential service providers (referred to as Saviors), such as plumbers, electricians, and other daily-life professionals.
 - 🗺️ **Location Fetching** - The system automatically detects and sets the user’s current location to ensure accurate service recommendations.
-- 🎨 **User and Provider Authentication** – The platform supports two distinct login modes: User (Customer) mode and Service Provider mode
+- 🎨 **User and Provider Authentication** – The platform supports two distinct modes of User, Customer mode and Service Provider mode, basically a provider can also be one to request service.
 - ⚡ **Service Provider Selection** – Users can either select service providers based on the required service category or describe their issue, upon which suitable providers are assigned accordingly. 
 - 🧩 **Rating System** – Users can provide feedback by rating their overall experience with the service providers, helping maintain service quality and reliability.
+- 🤖 **Chat Bot** - An interactive chatbot(SaviorBOT) is also available in the website to help one resolve minor issues.
 
 ---
 
