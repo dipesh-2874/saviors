@@ -136,24 +136,30 @@
                                     </div>
                                     <div class="btns flex justify-between">
                                         <p></p>
-                                        <input id="num_<%= post.user._id %>" class="text-xs translate-y-[-15px]" value="<%= post.user.number %>" readonly hidden>
-                                        <a id="copyBtn_<%= post.user._id %>" class="bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" href="">
-                                            <box-icon name='plus-circle' color="#ffffff" type='solid' animation='flashing' ></box-icon>
+                                        <input class="contactNumber hidden" value="<%= post.user.number %>" readonly>
+                                        <a href="#" class="copyBtn bg-blue-600 py-1 px-2 rounded-lg text-sm flex items-center gap-1" data-user="<%= post.user._id %>">
+                                            <box-icon name="plus-circle" color="#ffffff" type="solid" animation="flashing"></box-icon>
                                             Support
                                         </a>
                                     </div>
                                     <script>
-                                        document.getElementById("copyBtn_<%= post.user._id %>").addEventListener("click", (e) => {
+                                        document.addEventListener("click", (e) => {
+                                            const btn = e.target.closest(".copyBtn");
+                                            if (!btn) return;
+
                                             e.preventDefault();
 
-                                            let val = document.getElementById("num_<%= post.user._id %>").value;
+                                            const container = btn.closest(".btns");
+                                            const input = container.querySelector(".contactNumber");
 
-                                            navigator.clipboard.writeText(val).then(() => {
+                                            if (!input) return;
+
+                                            navigator.clipboard.writeText(input.value).then(() => {
                                                 if (window.Swal) {
                                                     Swal.fire({
-                                                        icon: 'success',
-                                                        title: 'Contact Number copied to Clipboard',
-                                                        confirmButtonText: 'OK'
+                                                        icon: "success",
+                                                        title: "Contact number copied!",
+                                                        confirmButtonText: "OK"
                                                     });
                                                 }
                                             });
